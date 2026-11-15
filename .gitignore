@@ -1,0 +1,11 @@
+# NASA Space Apps Project .gitignore
+*.zip
+~$*
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+
+# Large raw OSDR data archives (100MB+ GitHub limit protection)
+nasa_life_sciences_data/files/*.zip
+nasa_life_sciences_data/files/*_aligned.csv

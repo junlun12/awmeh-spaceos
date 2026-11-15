@@ -1,0 +1,2126 @@
+{
+  "mission": "HERA_45D_ANALOG",
+  "crew": [
+    "ASTRO-01",
+    "ASTRO-02",
+    "ASTRO-03",
+    "ASTRO-04"
+  ],
+  "daily_matrices": [
+    {
+      "day": 1,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 102,
+          "mean_interpersonal_distance_meters": 1.75,
+          "shared_mess_hall_min": 73,
+          "cohesion_index": 58.29,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 78,
+          "mean_interpersonal_distance_meters": 1.5,
+          "shared_mess_hall_min": 68,
+          "cohesion_index": 52.0,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 111,
+          "mean_interpersonal_distance_meters": 1.49,
+          "shared_mess_hall_min": 62,
+          "cohesion_index": 74.5,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 99,
+          "mean_interpersonal_distance_meters": 1.49,
+          "shared_mess_hall_min": 55,
+          "cohesion_index": 66.44,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 140,
+          "mean_interpersonal_distance_meters": 1.24,
+          "shared_mess_hall_min": 55,
+          "cohesion_index": 112.9,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 93,
+          "mean_interpersonal_distance_meters": 1.32,
+          "shared_mess_hall_min": 68,
+          "cohesion_index": 70.45,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 2,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 84,
+          "mean_interpersonal_distance_meters": 1.55,
+          "shared_mess_hall_min": 73,
+          "cohesion_index": 54.19,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 91,
+          "mean_interpersonal_distance_meters": 1.5,
+          "shared_mess_hall_min": 55,
+          "cohesion_index": 60.67,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 101,
+          "mean_interpersonal_distance_meters": 1.41,
+          "shared_mess_hall_min": 70,
+          "cohesion_index": 71.63,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 86,
+          "mean_interpersonal_distance_meters": 1.51,
+          "shared_mess_hall_min": 61,
+          "cohesion_index": 56.95,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 137,
+          "mean_interpersonal_distance_meters": 1.51,
+          "shared_mess_hall_min": 48,
+          "cohesion_index": 90.73,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 106,
+          "mean_interpersonal_distance_meters": 1.21,
+          "shared_mess_hall_min": 49,
+          "cohesion_index": 87.6,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 3,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 121,
+          "mean_interpersonal_distance_meters": 1.24,
+          "shared_mess_hall_min": 45,
+          "cohesion_index": 97.58,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 134,
+          "mean_interpersonal_distance_meters": 1.57,
+          "shared_mess_hall_min": 62,
+          "cohesion_index": 85.35,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 82,
+          "mean_interpersonal_distance_meters": 1.5,
+          "shared_mess_hall_min": 63,
+          "cohesion_index": 54.67,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 107,
+          "mean_interpersonal_distance_meters": 1.67,
+          "shared_mess_hall_min": 56,
+          "cohesion_index": 64.07,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 80,
+          "mean_interpersonal_distance_meters": 1.61,
+          "shared_mess_hall_min": 54,
+          "cohesion_index": 49.69,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 138,
+          "mean_interpersonal_distance_meters": 1.35,
+          "shared_mess_hall_min": 68,
+          "cohesion_index": 102.22,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 4,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 108,
+          "mean_interpersonal_distance_meters": 1.36,
+          "shared_mess_hall_min": 69,
+          "cohesion_index": 79.41,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 94,
+          "mean_interpersonal_distance_meters": 1.28,
+          "shared_mess_hall_min": 55,
+          "cohesion_index": 73.44,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 83,
+          "mean_interpersonal_distance_meters": 1.37,
+          "shared_mess_hall_min": 53,
+          "cohesion_index": 60.58,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 91,
+          "mean_interpersonal_distance_meters": 1.31,
+          "shared_mess_hall_min": 60,
+          "cohesion_index": 69.47,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 123,
+          "mean_interpersonal_distance_meters": 1.32,
+          "shared_mess_hall_min": 52,
+          "cohesion_index": 93.18,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 106,
+          "mean_interpersonal_distance_meters": 1.48,
+          "shared_mess_hall_min": 57,
+          "cohesion_index": 71.62,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 5,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 80,
+          "mean_interpersonal_distance_meters": 1.43,
+          "shared_mess_hall_min": 74,
+          "cohesion_index": 55.94,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 91,
+          "mean_interpersonal_distance_meters": 1.42,
+          "shared_mess_hall_min": 68,
+          "cohesion_index": 64.08,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 86,
+          "mean_interpersonal_distance_meters": 1.78,
+          "shared_mess_hall_min": 63,
+          "cohesion_index": 48.31,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 131,
+          "mean_interpersonal_distance_meters": 1.2,
+          "shared_mess_hall_min": 53,
+          "cohesion_index": 109.17,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 120,
+          "mean_interpersonal_distance_meters": 1.45,
+          "shared_mess_hall_min": 59,
+          "cohesion_index": 82.76,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 122,
+          "mean_interpersonal_distance_meters": 1.76,
+          "shared_mess_hall_min": 45,
+          "cohesion_index": 69.32,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 6,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 130,
+          "mean_interpersonal_distance_meters": 1.22,
+          "shared_mess_hall_min": 46,
+          "cohesion_index": 106.56,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 133,
+          "mean_interpersonal_distance_meters": 1.47,
+          "shared_mess_hall_min": 72,
+          "cohesion_index": 90.48,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 140,
+          "mean_interpersonal_distance_meters": 1.32,
+          "shared_mess_hall_min": 46,
+          "cohesion_index": 106.06,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 96,
+          "mean_interpersonal_distance_meters": 1.48,
+          "shared_mess_hall_min": 69,
+          "cohesion_index": 64.86,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 99,
+          "mean_interpersonal_distance_meters": 1.76,
+          "shared_mess_hall_min": 48,
+          "cohesion_index": 56.25,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 94,
+          "mean_interpersonal_distance_meters": 1.72,
+          "shared_mess_hall_min": 49,
+          "cohesion_index": 54.65,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 7,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 140,
+          "mean_interpersonal_distance_meters": 1.47,
+          "shared_mess_hall_min": 56,
+          "cohesion_index": 95.24,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 95,
+          "mean_interpersonal_distance_meters": 1.62,
+          "shared_mess_hall_min": 66,
+          "cohesion_index": 58.64,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 93,
+          "mean_interpersonal_distance_meters": 1.49,
+          "shared_mess_hall_min": 70,
+          "cohesion_index": 62.42,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 103,
+          "mean_interpersonal_distance_meters": 1.53,
+          "shared_mess_hall_min": 65,
+          "cohesion_index": 67.32,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 108,
+          "mean_interpersonal_distance_meters": 1.7,
+          "shared_mess_hall_min": 52,
+          "cohesion_index": 63.53,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 91,
+          "mean_interpersonal_distance_meters": 1.3,
+          "shared_mess_hall_min": 69,
+          "cohesion_index": 70.0,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 8,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 96,
+          "mean_interpersonal_distance_meters": 1.31,
+          "shared_mess_hall_min": 71,
+          "cohesion_index": 73.28,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 123,
+          "mean_interpersonal_distance_meters": 1.7,
+          "shared_mess_hall_min": 50,
+          "cohesion_index": 72.35,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 138,
+          "mean_interpersonal_distance_meters": 1.21,
+          "shared_mess_hall_min": 47,
+          "cohesion_index": 114.05,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 83,
+          "mean_interpersonal_distance_meters": 1.47,
+          "shared_mess_hall_min": 57,
+          "cohesion_index": 56.46,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 137,
+          "mean_interpersonal_distance_meters": 1.45,
+          "shared_mess_hall_min": 71,
+          "cohesion_index": 94.48,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 100,
+          "mean_interpersonal_distance_meters": 1.55,
+          "shared_mess_hall_min": 58,
+          "cohesion_index": 64.52,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 9,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 97,
+          "mean_interpersonal_distance_meters": 1.22,
+          "shared_mess_hall_min": 69,
+          "cohesion_index": 79.51,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 102,
+          "mean_interpersonal_distance_meters": 1.37,
+          "shared_mess_hall_min": 52,
+          "cohesion_index": 74.45,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 109,
+          "mean_interpersonal_distance_meters": 1.76,
+          "shared_mess_hall_min": 66,
+          "cohesion_index": 61.93,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 104,
+          "mean_interpersonal_distance_meters": 1.4,
+          "shared_mess_hall_min": 69,
+          "cohesion_index": 74.29,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 132,
+          "mean_interpersonal_distance_meters": 1.65,
+          "shared_mess_hall_min": 50,
+          "cohesion_index": 80.0,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 118,
+          "mean_interpersonal_distance_meters": 1.77,
+          "shared_mess_hall_min": 51,
+          "cohesion_index": 66.67,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 10,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 117,
+          "mean_interpersonal_distance_meters": 1.67,
+          "shared_mess_hall_min": 53,
+          "cohesion_index": 70.06,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 124,
+          "mean_interpersonal_distance_meters": 1.35,
+          "shared_mess_hall_min": 46,
+          "cohesion_index": 91.85,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 78,
+          "mean_interpersonal_distance_meters": 1.42,
+          "shared_mess_hall_min": 63,
+          "cohesion_index": 54.93,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 132,
+          "mean_interpersonal_distance_meters": 1.24,
+          "shared_mess_hall_min": 51,
+          "cohesion_index": 106.45,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 119,
+          "mean_interpersonal_distance_meters": 1.43,
+          "shared_mess_hall_min": 60,
+          "cohesion_index": 83.22,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 89,
+          "mean_interpersonal_distance_meters": 1.3,
+          "shared_mess_hall_min": 67,
+          "cohesion_index": 68.46,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 11,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 80,
+          "mean_interpersonal_distance_meters": 1.77,
+          "shared_mess_hall_min": 61,
+          "cohesion_index": 45.2,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 82,
+          "mean_interpersonal_distance_meters": 1.71,
+          "shared_mess_hall_min": 74,
+          "cohesion_index": 47.95,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 90,
+          "mean_interpersonal_distance_meters": 1.55,
+          "shared_mess_hall_min": 67,
+          "cohesion_index": 58.06,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 104,
+          "mean_interpersonal_distance_meters": 1.52,
+          "shared_mess_hall_min": 45,
+          "cohesion_index": 68.42,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 78,
+          "mean_interpersonal_distance_meters": 1.64,
+          "shared_mess_hall_min": 72,
+          "cohesion_index": 47.56,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 86,
+          "mean_interpersonal_distance_meters": 1.5,
+          "shared_mess_hall_min": 52,
+          "cohesion_index": 57.33,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 12,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 124,
+          "mean_interpersonal_distance_meters": 1.3,
+          "shared_mess_hall_min": 71,
+          "cohesion_index": 95.38,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 115,
+          "mean_interpersonal_distance_meters": 1.77,
+          "shared_mess_hall_min": 51,
+          "cohesion_index": 64.97,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 94,
+          "mean_interpersonal_distance_meters": 1.21,
+          "shared_mess_hall_min": 54,
+          "cohesion_index": 77.69,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 83,
+          "mean_interpersonal_distance_meters": 1.56,
+          "shared_mess_hall_min": 68,
+          "cohesion_index": 53.21,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 140,
+          "mean_interpersonal_distance_meters": 1.46,
+          "shared_mess_hall_min": 56,
+          "cohesion_index": 95.89,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 133,
+          "mean_interpersonal_distance_meters": 1.59,
+          "shared_mess_hall_min": 72,
+          "cohesion_index": 83.65,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 13,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 132,
+          "mean_interpersonal_distance_meters": 1.51,
+          "shared_mess_hall_min": 71,
+          "cohesion_index": 87.42,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 87,
+          "mean_interpersonal_distance_meters": 1.51,
+          "shared_mess_hall_min": 71,
+          "cohesion_index": 57.62,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 135,
+          "mean_interpersonal_distance_meters": 1.69,
+          "shared_mess_hall_min": 66,
+          "cohesion_index": 79.88,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 90,
+          "mean_interpersonal_distance_meters": 1.45,
+          "shared_mess_hall_min": 59,
+          "cohesion_index": 62.07,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 129,
+          "mean_interpersonal_distance_meters": 1.41,
+          "shared_mess_hall_min": 69,
+          "cohesion_index": 91.49,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 83,
+          "mean_interpersonal_distance_meters": 1.72,
+          "shared_mess_hall_min": 72,
+          "cohesion_index": 48.26,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 14,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 114,
+          "mean_interpersonal_distance_meters": 1.35,
+          "shared_mess_hall_min": 45,
+          "cohesion_index": 84.44,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 92,
+          "mean_interpersonal_distance_meters": 1.78,
+          "shared_mess_hall_min": 57,
+          "cohesion_index": 51.69,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 135,
+          "mean_interpersonal_distance_meters": 1.26,
+          "shared_mess_hall_min": 62,
+          "cohesion_index": 107.14,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 124,
+          "mean_interpersonal_distance_meters": 1.78,
+          "shared_mess_hall_min": 54,
+          "cohesion_index": 69.66,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 126,
+          "mean_interpersonal_distance_meters": 1.26,
+          "shared_mess_hall_min": 66,
+          "cohesion_index": 100.0,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 127,
+          "mean_interpersonal_distance_meters": 1.72,
+          "shared_mess_hall_min": 63,
+          "cohesion_index": 73.84,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 15,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 86,
+          "mean_interpersonal_distance_meters": 1.57,
+          "shared_mess_hall_min": 68,
+          "cohesion_index": 54.78,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 111,
+          "mean_interpersonal_distance_meters": 1.25,
+          "shared_mess_hall_min": 68,
+          "cohesion_index": 88.8,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 81,
+          "mean_interpersonal_distance_meters": 1.73,
+          "shared_mess_hall_min": 57,
+          "cohesion_index": 46.82,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 118,
+          "mean_interpersonal_distance_meters": 1.48,
+          "shared_mess_hall_min": 60,
+          "cohesion_index": 79.73,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 124,
+          "mean_interpersonal_distance_meters": 1.29,
+          "shared_mess_hall_min": 62,
+          "cohesion_index": 96.12,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 120,
+          "mean_interpersonal_distance_meters": 1.43,
+          "shared_mess_hall_min": 51,
+          "cohesion_index": 83.92,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 16,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 90,
+          "mean_interpersonal_distance_meters": 1.54,
+          "shared_mess_hall_min": 71,
+          "cohesion_index": 58.44,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 102,
+          "mean_interpersonal_distance_meters": 1.34,
+          "shared_mess_hall_min": 50,
+          "cohesion_index": 76.12,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 126,
+          "mean_interpersonal_distance_meters": 1.76,
+          "shared_mess_hall_min": 48,
+          "cohesion_index": 71.59,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 96,
+          "mean_interpersonal_distance_meters": 1.51,
+          "shared_mess_hall_min": 50,
+          "cohesion_index": 63.58,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 87,
+          "mean_interpersonal_distance_meters": 1.77,
+          "shared_mess_hall_min": 49,
+          "cohesion_index": 49.15,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 140,
+          "mean_interpersonal_distance_meters": 1.49,
+          "shared_mess_hall_min": 61,
+          "cohesion_index": 93.96,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 17,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 86,
+          "mean_interpersonal_distance_meters": 1.54,
+          "shared_mess_hall_min": 53,
+          "cohesion_index": 55.84,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 78,
+          "mean_interpersonal_distance_meters": 1.32,
+          "shared_mess_hall_min": 45,
+          "cohesion_index": 59.09,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 126,
+          "mean_interpersonal_distance_meters": 1.34,
+          "shared_mess_hall_min": 73,
+          "cohesion_index": 94.03,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 137,
+          "mean_interpersonal_distance_meters": 1.8,
+          "shared_mess_hall_min": 52,
+          "cohesion_index": 76.11,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 107,
+          "mean_interpersonal_distance_meters": 1.59,
+          "shared_mess_hall_min": 54,
+          "cohesion_index": 67.3,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 128,
+          "mean_interpersonal_distance_meters": 1.8,
+          "shared_mess_hall_min": 68,
+          "cohesion_index": 71.11,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 18,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 121,
+          "mean_interpersonal_distance_meters": 1.73,
+          "shared_mess_hall_min": 65,
+          "cohesion_index": 69.94,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 116,
+          "mean_interpersonal_distance_meters": 1.57,
+          "shared_mess_hall_min": 51,
+          "cohesion_index": 73.89,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 107,
+          "mean_interpersonal_distance_meters": 1.25,
+          "shared_mess_hall_min": 72,
+          "cohesion_index": 85.6,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 111,
+          "mean_interpersonal_distance_meters": 1.38,
+          "shared_mess_hall_min": 66,
+          "cohesion_index": 80.43,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 87,
+          "mean_interpersonal_distance_meters": 1.77,
+          "shared_mess_hall_min": 58,
+          "cohesion_index": 49.15,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 119,
+          "mean_interpersonal_distance_meters": 1.26,
+          "shared_mess_hall_min": 52,
+          "cohesion_index": 94.44,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 19,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 104,
+          "mean_interpersonal_distance_meters": 1.56,
+          "shared_mess_hall_min": 67,
+          "cohesion_index": 66.67,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 96,
+          "mean_interpersonal_distance_meters": 1.54,
+          "shared_mess_hall_min": 64,
+          "cohesion_index": 62.34,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 85,
+          "mean_interpersonal_distance_meters": 1.35,
+          "shared_mess_hall_min": 59,
+          "cohesion_index": 62.96,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 108,
+          "mean_interpersonal_distance_meters": 1.55,
+          "shared_mess_hall_min": 54,
+          "cohesion_index": 69.68,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 81,
+          "mean_interpersonal_distance_meters": 1.45,
+          "shared_mess_hall_min": 49,
+          "cohesion_index": 55.86,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 136,
+          "mean_interpersonal_distance_meters": 1.66,
+          "shared_mess_hall_min": 49,
+          "cohesion_index": 81.93,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 20,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 110,
+          "mean_interpersonal_distance_meters": 1.4,
+          "shared_mess_hall_min": 51,
+          "cohesion_index": 78.57,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 106,
+          "mean_interpersonal_distance_meters": 1.62,
+          "shared_mess_hall_min": 67,
+          "cohesion_index": 65.43,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 93,
+          "mean_interpersonal_distance_meters": 1.39,
+          "shared_mess_hall_min": 57,
+          "cohesion_index": 66.91,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 140,
+          "mean_interpersonal_distance_meters": 1.7,
+          "shared_mess_hall_min": 50,
+          "cohesion_index": 82.35,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 133,
+          "mean_interpersonal_distance_meters": 1.65,
+          "shared_mess_hall_min": 50,
+          "cohesion_index": 80.61,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 83,
+          "mean_interpersonal_distance_meters": 1.48,
+          "shared_mess_hall_min": 75,
+          "cohesion_index": 56.08,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 21,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 83,
+          "mean_interpersonal_distance_meters": 1.46,
+          "shared_mess_hall_min": 73,
+          "cohesion_index": 56.85,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 104,
+          "mean_interpersonal_distance_meters": 1.32,
+          "shared_mess_hall_min": 66,
+          "cohesion_index": 78.79,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 84,
+          "mean_interpersonal_distance_meters": 1.43,
+          "shared_mess_hall_min": 47,
+          "cohesion_index": 58.74,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 98,
+          "mean_interpersonal_distance_meters": 1.34,
+          "shared_mess_hall_min": 71,
+          "cohesion_index": 73.13,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 89,
+          "mean_interpersonal_distance_meters": 1.39,
+          "shared_mess_hall_min": 60,
+          "cohesion_index": 64.03,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 80,
+          "mean_interpersonal_distance_meters": 1.7,
+          "shared_mess_hall_min": 61,
+          "cohesion_index": 47.06,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 22,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 87,
+          "mean_interpersonal_distance_meters": 1.75,
+          "shared_mess_hall_min": 61,
+          "cohesion_index": 49.71,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 112,
+          "mean_interpersonal_distance_meters": 1.25,
+          "shared_mess_hall_min": 54,
+          "cohesion_index": 89.6,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 78,
+          "mean_interpersonal_distance_meters": 1.74,
+          "shared_mess_hall_min": 58,
+          "cohesion_index": 44.83,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 112,
+          "mean_interpersonal_distance_meters": 1.32,
+          "shared_mess_hall_min": 52,
+          "cohesion_index": 84.85,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 75,
+          "mean_interpersonal_distance_meters": 1.78,
+          "shared_mess_hall_min": 46,
+          "cohesion_index": 42.13,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 83,
+          "mean_interpersonal_distance_meters": 1.72,
+          "shared_mess_hall_min": 63,
+          "cohesion_index": 48.26,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 23,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 84,
+          "mean_interpersonal_distance_meters": 1.45,
+          "shared_mess_hall_min": 56,
+          "cohesion_index": 57.93,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 89,
+          "mean_interpersonal_distance_meters": 1.24,
+          "shared_mess_hall_min": 55,
+          "cohesion_index": 71.77,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 93,
+          "mean_interpersonal_distance_meters": 1.59,
+          "shared_mess_hall_min": 71,
+          "cohesion_index": 58.49,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 100,
+          "mean_interpersonal_distance_meters": 1.6,
+          "shared_mess_hall_min": 52,
+          "cohesion_index": 62.5,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 127,
+          "mean_interpersonal_distance_meters": 1.28,
+          "shared_mess_hall_min": 60,
+          "cohesion_index": 99.22,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 81,
+          "mean_interpersonal_distance_meters": 1.26,
+          "shared_mess_hall_min": 58,
+          "cohesion_index": 64.29,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 24,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 109,
+          "mean_interpersonal_distance_meters": 1.63,
+          "shared_mess_hall_min": 69,
+          "cohesion_index": 66.87,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 115,
+          "mean_interpersonal_distance_meters": 1.47,
+          "shared_mess_hall_min": 55,
+          "cohesion_index": 78.23,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 117,
+          "mean_interpersonal_distance_meters": 1.2,
+          "shared_mess_hall_min": 59,
+          "cohesion_index": 97.5,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 99,
+          "mean_interpersonal_distance_meters": 1.51,
+          "shared_mess_hall_min": 45,
+          "cohesion_index": 65.56,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 107,
+          "mean_interpersonal_distance_meters": 1.31,
+          "shared_mess_hall_min": 61,
+          "cohesion_index": 81.68,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 119,
+          "mean_interpersonal_distance_meters": 1.65,
+          "shared_mess_hall_min": 48,
+          "cohesion_index": 72.12,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 25,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 24,
+          "mean_interpersonal_distance_meters": 3.49,
+          "shared_mess_hall_min": 10,
+          "cohesion_index": 6.88,
+          "status": "ISOLATED_CONFLICT"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 75,
+          "mean_interpersonal_distance_meters": 1.48,
+          "shared_mess_hall_min": 66,
+          "cohesion_index": 50.68,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 134,
+          "mean_interpersonal_distance_meters": 1.4,
+          "shared_mess_hall_min": 56,
+          "cohesion_index": 95.71,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 97,
+          "mean_interpersonal_distance_meters": 1.46,
+          "shared_mess_hall_min": 70,
+          "cohesion_index": 66.44,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 94,
+          "mean_interpersonal_distance_meters": 1.8,
+          "shared_mess_hall_min": 54,
+          "cohesion_index": 52.22,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 105,
+          "mean_interpersonal_distance_meters": 1.39,
+          "shared_mess_hall_min": 52,
+          "cohesion_index": 75.54,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 26,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 13,
+          "mean_interpersonal_distance_meters": 4.18,
+          "shared_mess_hall_min": 10,
+          "cohesion_index": 3.11,
+          "status": "ISOLATED_CONFLICT"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 105,
+          "mean_interpersonal_distance_meters": 1.8,
+          "shared_mess_hall_min": 69,
+          "cohesion_index": 58.33,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 101,
+          "mean_interpersonal_distance_meters": 1.6,
+          "shared_mess_hall_min": 49,
+          "cohesion_index": 63.12,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 117,
+          "mean_interpersonal_distance_meters": 1.71,
+          "shared_mess_hall_min": 50,
+          "cohesion_index": 68.42,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 104,
+          "mean_interpersonal_distance_meters": 1.57,
+          "shared_mess_hall_min": 57,
+          "cohesion_index": 66.24,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 90,
+          "mean_interpersonal_distance_meters": 1.75,
+          "shared_mess_hall_min": 74,
+          "cohesion_index": 51.43,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 27,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 13,
+          "mean_interpersonal_distance_meters": 4.48,
+          "shared_mess_hall_min": 6,
+          "cohesion_index": 2.9,
+          "status": "ISOLATED_CONFLICT"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 105,
+          "mean_interpersonal_distance_meters": 1.29,
+          "shared_mess_hall_min": 51,
+          "cohesion_index": 81.4,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 108,
+          "mean_interpersonal_distance_meters": 1.73,
+          "shared_mess_hall_min": 64,
+          "cohesion_index": 62.43,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 80,
+          "mean_interpersonal_distance_meters": 1.51,
+          "shared_mess_hall_min": 58,
+          "cohesion_index": 52.98,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 128,
+          "mean_interpersonal_distance_meters": 1.53,
+          "shared_mess_hall_min": 68,
+          "cohesion_index": 83.66,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 81,
+          "mean_interpersonal_distance_meters": 1.46,
+          "shared_mess_hall_min": 61,
+          "cohesion_index": 55.48,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 28,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 25,
+          "mean_interpersonal_distance_meters": 4.29,
+          "shared_mess_hall_min": 12,
+          "cohesion_index": 5.83,
+          "status": "ISOLATED_CONFLICT"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 139,
+          "mean_interpersonal_distance_meters": 1.26,
+          "shared_mess_hall_min": 70,
+          "cohesion_index": 110.32,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 127,
+          "mean_interpersonal_distance_meters": 1.22,
+          "shared_mess_hall_min": 72,
+          "cohesion_index": 104.1,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 105,
+          "mean_interpersonal_distance_meters": 1.28,
+          "shared_mess_hall_min": 61,
+          "cohesion_index": 82.03,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 97,
+          "mean_interpersonal_distance_meters": 1.2,
+          "shared_mess_hall_min": 65,
+          "cohesion_index": 80.83,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 95,
+          "mean_interpersonal_distance_meters": 1.63,
+          "shared_mess_hall_min": 60,
+          "cohesion_index": 58.28,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 29,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 15,
+          "mean_interpersonal_distance_meters": 3.71,
+          "shared_mess_hall_min": 7,
+          "cohesion_index": 4.04,
+          "status": "ISOLATED_CONFLICT"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 137,
+          "mean_interpersonal_distance_meters": 1.63,
+          "shared_mess_hall_min": 53,
+          "cohesion_index": 84.05,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 98,
+          "mean_interpersonal_distance_meters": 1.65,
+          "shared_mess_hall_min": 69,
+          "cohesion_index": 59.39,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 86,
+          "mean_interpersonal_distance_meters": 1.66,
+          "shared_mess_hall_min": 68,
+          "cohesion_index": 51.81,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 129,
+          "mean_interpersonal_distance_meters": 1.23,
+          "shared_mess_hall_min": 64,
+          "cohesion_index": 104.88,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 133,
+          "mean_interpersonal_distance_meters": 1.72,
+          "shared_mess_hall_min": 51,
+          "cohesion_index": 77.33,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 30,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 22,
+          "mean_interpersonal_distance_meters": 4.12,
+          "shared_mess_hall_min": 12,
+          "cohesion_index": 5.34,
+          "status": "ISOLATED_CONFLICT"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 136,
+          "mean_interpersonal_distance_meters": 1.33,
+          "shared_mess_hall_min": 58,
+          "cohesion_index": 102.26,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 138,
+          "mean_interpersonal_distance_meters": 1.51,
+          "shared_mess_hall_min": 63,
+          "cohesion_index": 91.39,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 108,
+          "mean_interpersonal_distance_meters": 1.57,
+          "shared_mess_hall_min": 50,
+          "cohesion_index": 68.79,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 114,
+          "mean_interpersonal_distance_meters": 1.72,
+          "shared_mess_hall_min": 73,
+          "cohesion_index": 66.28,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 136,
+          "mean_interpersonal_distance_meters": 1.75,
+          "shared_mess_hall_min": 63,
+          "cohesion_index": 77.71,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 31,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 19,
+          "mean_interpersonal_distance_meters": 3.63,
+          "shared_mess_hall_min": 12,
+          "cohesion_index": 5.23,
+          "status": "ISOLATED_CONFLICT"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 114,
+          "mean_interpersonal_distance_meters": 1.52,
+          "shared_mess_hall_min": 67,
+          "cohesion_index": 75.0,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 110,
+          "mean_interpersonal_distance_meters": 1.45,
+          "shared_mess_hall_min": 66,
+          "cohesion_index": 75.86,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 118,
+          "mean_interpersonal_distance_meters": 1.46,
+          "shared_mess_hall_min": 59,
+          "cohesion_index": 80.82,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 126,
+          "mean_interpersonal_distance_meters": 1.61,
+          "shared_mess_hall_min": 73,
+          "cohesion_index": 78.26,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 79,
+          "mean_interpersonal_distance_meters": 1.63,
+          "shared_mess_hall_min": 63,
+          "cohesion_index": 48.47,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 32,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 20,
+          "mean_interpersonal_distance_meters": 4.3,
+          "shared_mess_hall_min": 8,
+          "cohesion_index": 4.65,
+          "status": "ISOLATED_CONFLICT"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 86,
+          "mean_interpersonal_distance_meters": 1.79,
+          "shared_mess_hall_min": 69,
+          "cohesion_index": 48.04,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 86,
+          "mean_interpersonal_distance_meters": 1.38,
+          "shared_mess_hall_min": 45,
+          "cohesion_index": 62.32,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 86,
+          "mean_interpersonal_distance_meters": 1.77,
+          "shared_mess_hall_min": 63,
+          "cohesion_index": 48.59,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 92,
+          "mean_interpersonal_distance_meters": 1.21,
+          "shared_mess_hall_min": 48,
+          "cohesion_index": 76.03,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 113,
+          "mean_interpersonal_distance_meters": 1.22,
+          "shared_mess_hall_min": 75,
+          "cohesion_index": 92.62,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 33,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 24,
+          "mean_interpersonal_distance_meters": 3.45,
+          "shared_mess_hall_min": 9,
+          "cohesion_index": 6.96,
+          "status": "ISOLATED_CONFLICT"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 91,
+          "mean_interpersonal_distance_meters": 1.24,
+          "shared_mess_hall_min": 67,
+          "cohesion_index": 73.39,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 122,
+          "mean_interpersonal_distance_meters": 1.75,
+          "shared_mess_hall_min": 46,
+          "cohesion_index": 69.71,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 121,
+          "mean_interpersonal_distance_meters": 1.57,
+          "shared_mess_hall_min": 60,
+          "cohesion_index": 77.07,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 88,
+          "mean_interpersonal_distance_meters": 1.41,
+          "shared_mess_hall_min": 58,
+          "cohesion_index": 62.41,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 86,
+          "mean_interpersonal_distance_meters": 1.24,
+          "shared_mess_hall_min": 73,
+          "cohesion_index": 69.35,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 34,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 23,
+          "mean_interpersonal_distance_meters": 4.27,
+          "shared_mess_hall_min": 6,
+          "cohesion_index": 5.39,
+          "status": "ISOLATED_CONFLICT"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 131,
+          "mean_interpersonal_distance_meters": 1.3,
+          "shared_mess_hall_min": 66,
+          "cohesion_index": 100.77,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 105,
+          "mean_interpersonal_distance_meters": 1.75,
+          "shared_mess_hall_min": 48,
+          "cohesion_index": 60.0,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 117,
+          "mean_interpersonal_distance_meters": 1.54,
+          "shared_mess_hall_min": 54,
+          "cohesion_index": 75.97,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 91,
+          "mean_interpersonal_distance_meters": 1.54,
+          "shared_mess_hall_min": 61,
+          "cohesion_index": 59.09,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 80,
+          "mean_interpersonal_distance_meters": 1.58,
+          "shared_mess_hall_min": 69,
+          "cohesion_index": 50.63,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 35,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 17,
+          "mean_interpersonal_distance_meters": 4.05,
+          "shared_mess_hall_min": 9,
+          "cohesion_index": 4.2,
+          "status": "ISOLATED_CONFLICT"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 78,
+          "mean_interpersonal_distance_meters": 1.77,
+          "shared_mess_hall_min": 74,
+          "cohesion_index": 44.07,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 75,
+          "mean_interpersonal_distance_meters": 1.35,
+          "shared_mess_hall_min": 57,
+          "cohesion_index": 55.56,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 111,
+          "mean_interpersonal_distance_meters": 1.44,
+          "shared_mess_hall_min": 57,
+          "cohesion_index": 77.08,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 114,
+          "mean_interpersonal_distance_meters": 1.67,
+          "shared_mess_hall_min": 63,
+          "cohesion_index": 68.26,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 83,
+          "mean_interpersonal_distance_meters": 1.63,
+          "shared_mess_hall_min": 56,
+          "cohesion_index": 50.92,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 36,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 20,
+          "mean_interpersonal_distance_meters": 3.58,
+          "shared_mess_hall_min": 6,
+          "cohesion_index": 5.59,
+          "status": "ISOLATED_CONFLICT"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 93,
+          "mean_interpersonal_distance_meters": 1.63,
+          "shared_mess_hall_min": 45,
+          "cohesion_index": 57.06,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 76,
+          "mean_interpersonal_distance_meters": 1.4,
+          "shared_mess_hall_min": 45,
+          "cohesion_index": 54.29,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 108,
+          "mean_interpersonal_distance_meters": 1.75,
+          "shared_mess_hall_min": 52,
+          "cohesion_index": 61.71,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 81,
+          "mean_interpersonal_distance_meters": 1.73,
+          "shared_mess_hall_min": 45,
+          "cohesion_index": 46.82,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 89,
+          "mean_interpersonal_distance_meters": 1.63,
+          "shared_mess_hall_min": 55,
+          "cohesion_index": 54.6,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 37,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 24,
+          "mean_interpersonal_distance_meters": 4.31,
+          "shared_mess_hall_min": 12,
+          "cohesion_index": 5.57,
+          "status": "ISOLATED_CONFLICT"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 101,
+          "mean_interpersonal_distance_meters": 1.27,
+          "shared_mess_hall_min": 67,
+          "cohesion_index": 79.53,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 130,
+          "mean_interpersonal_distance_meters": 1.4,
+          "shared_mess_hall_min": 58,
+          "cohesion_index": 92.86,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 92,
+          "mean_interpersonal_distance_meters": 1.45,
+          "shared_mess_hall_min": 57,
+          "cohesion_index": 63.45,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 134,
+          "mean_interpersonal_distance_meters": 1.35,
+          "shared_mess_hall_min": 70,
+          "cohesion_index": 99.26,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 124,
+          "mean_interpersonal_distance_meters": 1.52,
+          "shared_mess_hall_min": 73,
+          "cohesion_index": 81.58,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 38,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 24,
+          "mean_interpersonal_distance_meters": 4.25,
+          "shared_mess_hall_min": 5,
+          "cohesion_index": 5.65,
+          "status": "ISOLATED_CONFLICT"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 75,
+          "mean_interpersonal_distance_meters": 1.56,
+          "shared_mess_hall_min": 57,
+          "cohesion_index": 48.08,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 84,
+          "mean_interpersonal_distance_meters": 1.64,
+          "shared_mess_hall_min": 69,
+          "cohesion_index": 51.22,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 97,
+          "mean_interpersonal_distance_meters": 1.23,
+          "shared_mess_hall_min": 60,
+          "cohesion_index": 78.86,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 105,
+          "mean_interpersonal_distance_meters": 1.75,
+          "shared_mess_hall_min": 60,
+          "cohesion_index": 60.0,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 119,
+          "mean_interpersonal_distance_meters": 1.46,
+          "shared_mess_hall_min": 70,
+          "cohesion_index": 81.51,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 39,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 23,
+          "mean_interpersonal_distance_meters": 3.32,
+          "shared_mess_hall_min": 10,
+          "cohesion_index": 6.93,
+          "status": "ISOLATED_CONFLICT"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 83,
+          "mean_interpersonal_distance_meters": 1.44,
+          "shared_mess_hall_min": 59,
+          "cohesion_index": 57.64,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 123,
+          "mean_interpersonal_distance_meters": 1.55,
+          "shared_mess_hall_min": 71,
+          "cohesion_index": 79.35,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 75,
+          "mean_interpersonal_distance_meters": 1.23,
+          "shared_mess_hall_min": 48,
+          "cohesion_index": 60.98,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 103,
+          "mean_interpersonal_distance_meters": 1.44,
+          "shared_mess_hall_min": 75,
+          "cohesion_index": 71.53,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 122,
+          "mean_interpersonal_distance_meters": 1.21,
+          "shared_mess_hall_min": 62,
+          "cohesion_index": 100.83,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 40,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 18,
+          "mean_interpersonal_distance_meters": 3.97,
+          "shared_mess_hall_min": 5,
+          "cohesion_index": 4.53,
+          "status": "ISOLATED_CONFLICT"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 97,
+          "mean_interpersonal_distance_meters": 1.75,
+          "shared_mess_hall_min": 51,
+          "cohesion_index": 55.43,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 113,
+          "mean_interpersonal_distance_meters": 1.6,
+          "shared_mess_hall_min": 69,
+          "cohesion_index": 70.62,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 116,
+          "mean_interpersonal_distance_meters": 1.56,
+          "shared_mess_hall_min": 59,
+          "cohesion_index": 74.36,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 123,
+          "mean_interpersonal_distance_meters": 1.58,
+          "shared_mess_hall_min": 59,
+          "cohesion_index": 77.85,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 88,
+          "mean_interpersonal_distance_meters": 1.28,
+          "shared_mess_hall_min": 69,
+          "cohesion_index": 68.75,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 41,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 23,
+          "mean_interpersonal_distance_meters": 4.06,
+          "shared_mess_hall_min": 9,
+          "cohesion_index": 5.67,
+          "status": "ISOLATED_CONFLICT"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 117,
+          "mean_interpersonal_distance_meters": 1.76,
+          "shared_mess_hall_min": 71,
+          "cohesion_index": 66.48,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 132,
+          "mean_interpersonal_distance_meters": 1.22,
+          "shared_mess_hall_min": 68,
+          "cohesion_index": 108.2,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 114,
+          "mean_interpersonal_distance_meters": 1.33,
+          "shared_mess_hall_min": 58,
+          "cohesion_index": 85.71,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 131,
+          "mean_interpersonal_distance_meters": 1.68,
+          "shared_mess_hall_min": 54,
+          "cohesion_index": 77.98,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 97,
+          "mean_interpersonal_distance_meters": 1.32,
+          "shared_mess_hall_min": 61,
+          "cohesion_index": 73.48,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 42,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 19,
+          "mean_interpersonal_distance_meters": 3.21,
+          "shared_mess_hall_min": 10,
+          "cohesion_index": 5.92,
+          "status": "ISOLATED_CONFLICT"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 103,
+          "mean_interpersonal_distance_meters": 1.53,
+          "shared_mess_hall_min": 55,
+          "cohesion_index": 67.32,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 85,
+          "mean_interpersonal_distance_meters": 1.52,
+          "shared_mess_hall_min": 70,
+          "cohesion_index": 55.92,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 124,
+          "mean_interpersonal_distance_meters": 1.53,
+          "shared_mess_hall_min": 56,
+          "cohesion_index": 81.05,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 84,
+          "mean_interpersonal_distance_meters": 1.23,
+          "shared_mess_hall_min": 67,
+          "cohesion_index": 68.29,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 128,
+          "mean_interpersonal_distance_meters": 1.26,
+          "shared_mess_hall_min": 60,
+          "cohesion_index": 101.59,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 43,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 23,
+          "mean_interpersonal_distance_meters": 3.64,
+          "shared_mess_hall_min": 9,
+          "cohesion_index": 6.32,
+          "status": "ISOLATED_CONFLICT"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 103,
+          "mean_interpersonal_distance_meters": 1.22,
+          "shared_mess_hall_min": 66,
+          "cohesion_index": 84.43,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 127,
+          "mean_interpersonal_distance_meters": 1.7,
+          "shared_mess_hall_min": 65,
+          "cohesion_index": 74.71,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 77,
+          "mean_interpersonal_distance_meters": 1.4,
+          "shared_mess_hall_min": 61,
+          "cohesion_index": 55.0,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 111,
+          "mean_interpersonal_distance_meters": 1.26,
+          "shared_mess_hall_min": 48,
+          "cohesion_index": 88.1,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 133,
+          "mean_interpersonal_distance_meters": 1.8,
+          "shared_mess_hall_min": 75,
+          "cohesion_index": 73.89,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 44,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 15,
+          "mean_interpersonal_distance_meters": 3.73,
+          "shared_mess_hall_min": 8,
+          "cohesion_index": 4.02,
+          "status": "ISOLATED_CONFLICT"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 103,
+          "mean_interpersonal_distance_meters": 1.56,
+          "shared_mess_hall_min": 57,
+          "cohesion_index": 66.03,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 82,
+          "mean_interpersonal_distance_meters": 1.51,
+          "shared_mess_hall_min": 64,
+          "cohesion_index": 54.3,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 117,
+          "mean_interpersonal_distance_meters": 1.52,
+          "shared_mess_hall_min": 75,
+          "cohesion_index": 76.97,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 93,
+          "mean_interpersonal_distance_meters": 1.36,
+          "shared_mess_hall_min": 46,
+          "cohesion_index": 68.38,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 120,
+          "mean_interpersonal_distance_meters": 1.57,
+          "shared_mess_hall_min": 68,
+          "cohesion_index": 76.43,
+          "status": "COHESIVE"
+        }
+      }
+    },
+    {
+      "day": 45,
+      "pairs": {
+        "ASTRO-01_ASTRO-02": {
+          "face_to_face_duration_min": 14,
+          "mean_interpersonal_distance_meters": 3.96,
+          "shared_mess_hall_min": 9,
+          "cohesion_index": 3.54,
+          "status": "ISOLATED_CONFLICT"
+        },
+        "ASTRO-01_ASTRO-03": {
+          "face_to_face_duration_min": 120,
+          "mean_interpersonal_distance_meters": 1.47,
+          "shared_mess_hall_min": 71,
+          "cohesion_index": 81.63,
+          "status": "COHESIVE"
+        },
+        "ASTRO-01_ASTRO-04": {
+          "face_to_face_duration_min": 75,
+          "mean_interpersonal_distance_meters": 1.67,
+          "shared_mess_hall_min": 56,
+          "cohesion_index": 44.91,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-03": {
+          "face_to_face_duration_min": 76,
+          "mean_interpersonal_distance_meters": 1.76,
+          "shared_mess_hall_min": 69,
+          "cohesion_index": 43.18,
+          "status": "COHESIVE"
+        },
+        "ASTRO-02_ASTRO-04": {
+          "face_to_face_duration_min": 102,
+          "mean_interpersonal_distance_meters": 1.76,
+          "shared_mess_hall_min": 69,
+          "cohesion_index": 57.95,
+          "status": "COHESIVE"
+        },
+        "ASTRO-03_ASTRO-04": {
+          "face_to_face_duration_min": 102,
+          "mean_interpersonal_distance_meters": 1.41,
+          "shared_mess_hall_min": 49,
+          "cohesion_index": 72.34,
+          "status": "COHESIVE"
+        }
+      }
+    }
+  ]
+}

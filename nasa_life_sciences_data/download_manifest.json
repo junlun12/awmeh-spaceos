@@ -1,0 +1,132 @@
+[
+  {
+    "category": "Neuro-Affective & Behavioral Health",
+    "accession": "OSD-952",
+    "title": "Automated behavioral segmentation and markerless pose tracking of mice during spaceflight",
+    "keyword": "behavioral",
+    "mission": "Spaceflight / Ground Analog",
+    "description": "The NASA Rodent Habitat aboard the International Space Station enables long-duration studies of behavioral responses to spaceflight, but video-based behavioral analysis has relied on laborious manual annotation. No study has tested whether deep learning tools can automate this analysis under the demanding imaging conditions of orbital vivaria. We applied pose estimation (SLEAP) and behavioral segmentation (DeepEthogram) to archival footage from the Rodent Research-1 mission. Nine labelers annotated 3,249 pose labels across 2,063 frames, and three behaviorists labeled 611,045 frames across 66 videos. Pose tracking accuracy approximated human inter-annotator variability despite progressive lens soiling, grid occlusions, and spherical aberration. Behavioral classification across eight categories achieved accuracy of 0.86–0.90 and suggests progressive behavioral adaptations to microgravity. Kinematic reconstruction of circling estimated centripetal accelerations periodically approaching 1g. This is the first application of deep learning-based pose estimation and behavioral segmentation to rodents in spaceflight, establishing benchmarks for future monitoring systems. This study derives results from the Pose Estimation assay (SLEAP) and the Behavioral Segmentation assay (DeepEthogram). All original and normalized video files are available upon request through the Rodent Research 1 payload record (https://osdr.nasa.gov/bio/repo/data/payloads/RR-1).",
+    "organisms": [],
+    "factors": [
+      "Mission Time",
+      "Spaceflight"
+    ],
+    "osdr_url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-952",
+    "nlsp_url": "https://nlsp.nasa.gov/explore?dataType=EXPERIMENTS&id=OSD-952",
+    "downloaded_files": [
+      "OSD-952_OSD-952_metadata_OSD-952-ISA.zip",
+      "OSD-952_LSDS-168_Behavioral Segmentation_inferences_aligned.csv"
+    ]
+  },
+  {
+    "category": "Neuro-Affective & Behavioral Health",
+    "accession": "OSD-751",
+    "title": "Effects of Space Flight on Inflammasome Activation in the Brain of Mice (Cortex; ECLIA)",
+    "keyword": "brain",
+    "mission": "Spaceflight / Ground Analog",
+    "description": "Space exploration exposes astronauts to stressors that alter the immune response, rendering them vulnerable to infections and diseases. In this study, we aimed to determine the levels of inflammasome activation in the brains of mice that were housed in the International Space Station (ISS) for 37 days. C57BL/6 mice were launched to the ISS as part of NASA’s Rodent Research 1 Mission on SpaceX-4 CRS-4 Dragon cargo spacecraft from September 21st, 2014, to October 25th, 2014. Dissected mouse brains from that mission were analyzed by immunoblotting of inflammasome signaling proteins and Electrochemiluminescence Immunoassay (ECLIA) for inflammatory cytokine levels. Our data indicate decreased inflammasome activation in the brains of mice that were housed in the ISS for 37 days when compared to the brains of mice that were maintained on the ground, and in mice corresponding to the baseline group that were sacrificed at the time of launching of SpaceX-4. Moreover, we did not detect any significant changes in the expression levels of the pro-inflammatory cytokines TNF-alpha, IL-2, IFN-gamma, IL-5, IL-6, IL-12p70 and IL-10 between the ground control and the flight groups. Together, these studies suggest that spaceflight results in a decrease in the levels of innate immune signaling molecules that govern inflammasome signaling in the brain of mice. This dataset derives results from the ECLIA assay using brain tissue.",
+    "organisms": [],
+    "factors": [
+      "Spaceflight"
+    ],
+    "osdr_url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-751",
+    "nlsp_url": "https://nlsp.nasa.gov/explore?dataType=EXPERIMENTS&id=OSD-751",
+    "downloaded_files": [
+      "OSD-751_OSD-751_metadata_OSD-751-ISA.zip",
+      "OSD-751_LSDS-112_Immunoassay_Roy_ECLIA_Cortex_TRANSFORMED.csv"
+    ]
+  },
+  {
+    "category": "Neuro-Affective & Behavioral Health",
+    "accession": "OSD-738",
+    "title": "Effects of Space Flight on Inflammasome Activation in the Brain of Mice (Brain, Western Blot and ECLIA)",
+    "keyword": "brain",
+    "mission": "Spaceflight / Ground Analog",
+    "description": "Space exploration exposes astronauts to stressors that alter the immune response, rendering them vulnerable to infections and diseases. In this study, we aimed to determine the levels of inflammasome activation in the brains of mice that were housed in the International Space Station (ISS) for 37 days. C57BL/6 mice were launched to the ISS as part of NASA’s Rodent Research 1 Mission on SpaceX-4 CRS-4 Dragon cargo spacecraft from September 21st, 2014, to October 25th, 2014. Dissected mouse brains from that mission were analyzed by immunoblotting of inflammasome signaling proteins and Electrochemiluminescence Immunoassay (ECLIA) for inflammatory cytokine levels. Our data indicate decreased inflammasome activation in the brains of mice that were housed in the ISS for 37 days when compared to the brains of mice that were maintained on the ground, and in mice corresponding to the baseline group that were sacrificed at the time of launching of SpaceX-4. Moreover, we did not detect any significant changes in the expression levels of the pro-inflammatory cytokines TNF-alpha, IL-2, IFN-gamma, IL-5, IL-6, IL-12p70 and IL-10 between the ground control and the flight groups. Together, these studies suggest that spaceflight results in a decrease in the levels of innate immune signaling molecules that govern inflammasome signaling in the brain of mice. This dataset derives results from the ECLIA and Western Blot assays using brain tissue.",
+    "organisms": [],
+    "factors": [
+      "Spaceflight"
+    ],
+    "osdr_url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-738",
+    "nlsp_url": "https://nlsp.nasa.gov/explore?dataType=EXPERIMENTS&id=OSD-738",
+    "downloaded_files": [
+      "OSD-738_OSD-738_metadata_OSD-738-ISA.zip",
+      "OSD-738_LSDS-107_western-blot_Roy_Brain_WesternBlot_TRANSFORMED.csv"
+    ]
+  },
+  {
+    "category": "Physiological & Environmental Hazards",
+    "accession": "OSD-73",
+    "title": "Transcriptome Profiles in Normal Human Bronchial Epithelial Cells after Exposure to gamma-rays and different HZE particles",
+    "keyword": "radiation",
+    "mission": "Spaceflight / Ground Analog",
+    "description": "Distinct transcriptome profiles in response to low-LET and high-LET, and different radiation qualities of HZE particles. Total RNA obtained from HBEC3KT cells after 1, 4, 12 and 24 hours of radiation. Mock-irradiated samples at each time point and control samples before radiation (0 hour) were also collected.",
+    "organisms": [],
+    "factors": [
+      "Ionizing Radiation",
+      "Absorbed Radiation Dose",
+      "Time of Sample Collection After Treatment"
+    ],
+    "osdr_url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-73",
+    "nlsp_url": "https://nlsp.nasa.gov/explore?dataType=EXPERIMENTS&id=OSD-73",
+    "downloaded_files": [
+      "OSD-73_OSD-73_metadata_OSD-73-ISA.zip",
+      "OSD-73_GLDS-73_microarray_GSM1082298-tbl-1.txt"
+    ]
+  },
+  {
+    "category": "Physiological & Environmental Hazards",
+    "accession": "OSD-489",
+    "title": "Quantifying Cancellous Bone Structural Changes in Microgravity: Axial Skeleton Results from the RR-1 Mission",
+    "keyword": "radiation",
+    "mission": "Spaceflight / Ground Analog",
+    "description": "Objective of this study was to further validate bone degradation in microgravity as site-specific and preferential to weight bearing bone. An objective of this study was to further understand the role of the mechanical environment in controlling the process of bone remodeling, namely local formation and resorption to maintain a healthy structure. These data from the lumbar 4 bones of Rodent Research-1 mission aboard the International Space Station, are unpublished, and were presented at the 2016 meeting of the American Society for Gravitational Space Research. This dataset derives results from the micro–computed tomography (mCT) assay.",
+    "organisms": [],
+    "factors": [
+      "Spaceflight"
+    ],
+    "osdr_url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-489",
+    "nlsp_url": "https://nlsp.nasa.gov/explore?dataType=EXPERIMENTS&id=OSD-489",
+    "downloaded_files": [
+      "OSD-489_OSD-489_metadata_OSD-489-ISA.zip",
+      "OSD-489_LSDS-15_microCT_alwoodSUBMITTED.csv"
+    ]
+  },
+  {
+    "category": "Physiological & Environmental Hazards",
+    "accession": "OSD-661",
+    "title": "Toward countering muscle and bone loss with spaceflight: GSK3 as a potential target (Lumbar Spine, HLS, DXA Scanning)",
+    "keyword": "bone loss",
+    "mission": "Spaceflight / Ground Analog",
+    "description": "We examined the effects of ~30 days of spaceflight on glycogen synthase kinase 3 (GSK3) content and inhibitory serine phosphorylation in murine muscle and bone samples from four separate missions (BION-M1, Rodent Research RR1, RR9, and RR18). Spaceflight reduced GSK3b content across all missions, whereas its serine phosphorylation was elevated with RR18 and BION-M1. The reduction in GSK3b was linked to the reduction in type IIA fibers commonly observed with spaceflight as these fibers are particularly enriched with GSK3. We then tested the effects of inhibiting GSK3 before this fiber type shift, and we demonstrate that muscle-specific Gsk3 knockdown increased muscle mass, preserved muscle strength, and promoted the oxidative fiber type with Earth-based hindlimb unloading. In bone, GSK3 activation was enhanced after spaceflight; and strikingly, muscle-specific Gsk3 deletion increased bone mineral density in response to hindlimb unloading. Thus, future studies should test the effects of GSK3 inhibition during spaceflight. This study derives results from the DXA Scanning assay using lumbar spine tissue from HLS mice. The lumbar spine data in this study are related to other studies using tissues from the same experiment; OSD-654 (tibia), OSD-660 (tibialis anterior), OSD-662 (soleus), OSD-663 (femur), and OSD-664 (extensor digitorum longus).",
+    "organisms": [],
+    "factors": [
+      "Hindlimb Unloading",
+      "Genotype"
+    ],
+    "osdr_url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-661",
+    "nlsp_url": "https://nlsp.nasa.gov/explore?dataType=EXPERIMENTS&id=OSD-661",
+    "downloaded_files": [
+      "OSD-661_OSD-661_metadata_OSD-661-ISA.zip",
+      "OSD-661_LSDS-69_Bone_microstructure_DXA_SUBMITTED.xlsx"
+    ]
+  },
+  {
+    "category": "Physiological & Environmental Hazards",
+    "accession": "OSD-310",
+    "title": "Spaceflight-induced (STS-62) vertebral bone loss in ovariectomized rats is associated with increased bone marrow adiposity and no change in bone formation",
+    "keyword": "bone loss",
+    "mission": "Spaceflight / Ground Analog",
+    "description": "There is often a reciprocal relationship between bone marrow adipocytes and osteoblasts, suggesting that marrow adipose tissue (MAT) antagonizes osteoblast differentiation. MAT is increased in rodents during spaceflight but a causal relationship between MAT and bone loss remains unclear. In the present study, we evaluated the effects of a 14-day spaceflight on bone mass, bone resorption, bone formation, and MAT in lumbar vertebrae of ovariectomized (OVX) rats. Twelve-week-old OVX Fischer 344 rats were randomly assigned to a ground control or flight group. Following flight, histological sections of the second lumbar vertebrae (n equals 11/group) were stained using a technique that allowed simultaneous quantification of cells and preflight fluorochrome label. Compared with ground controls, rats flown in space had 32% lower cancellous bone area and 306% higher MAT. The increased adiposity was due to an increase in adipocyte number (224%) and size (26%). Mineral apposition rate and osteoblast turnover were unchanged during spaceflight. In contrast, resorption of a preflight fluorochrome and osteoclast-lined bone perimeter were increased (16% and 229%, respectively). The present findings indicate that cancellous bone loss in rat lumbar vertebrae during spaceflight is accompanied by increased bone resorption and MAT but no change in bone formation. These findings do not support the hypothesis that increased MAT during spaceflight reduces osteoblast activity or lifespan. However, in the context of ovarian hormone deficiency, bone formation during spaceflight was insufficient to balance increased resorption, indicating defective coupling. The results are therefore consistent with the hypothesis that during spaceflight mesenchymal stem cells are diverted to adipocytes at the expense of forming osteoblasts. This dataset derives results from the bone histomorphometry assay.",
+    "organisms": [],
+    "factors": [
+      "Spaceflight"
+    ],
+    "osdr_url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-310",
+    "nlsp_url": "https://nlsp.nasa.gov/explore?dataType=EXPERIMENTS&id=OSD-310",
+    "downloaded_files": [
+      "OSD-310_OSD-310_metadata_OSD-310-ISA.zip",
+      "OSD-310_LSDS-30_histomorphometry_LV_NASA_4_19_18.xlsx"
+    ]
+  }
+]

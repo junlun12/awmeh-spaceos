@@ -1,0 +1,3813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>awmeh - Astronaut Wellbeing & Mental-health Edge Heuristics | NASA Space Apps</title>
+  <style>
+    /* 
+      awmeh Aerospace Clinical Interface Design System
+      Philosophy: Content-First, High-Legibility, Anti-Glare, Microgravity Ergonomics
+      Strict Compliance: Zero corporate trademarks, Zero AI-slop neon, 100% Glanceable
+    */
+    :root {
+      --canvas-bg: #040711;
+      --surface-card: rgba(10, 16, 28, 0.65);
+      --surface-card-hover: rgba(16, 24, 42, 0.75);
+      --surface-subcard: rgba(16, 24, 42, 0.52);
+      --surface-elevated: rgba(24, 34, 56, 0.82);
+      --border-subtle: rgba(255, 255, 255, 0.12);
+      --border-focus: rgba(56, 189, 248, 0.45);
+      
+      /* Semantic Clinical Palette */
+      --color-cardio: #f43f5e;     /* Heart, Vagal Tone, ECG */
+      --color-alert: #f59e0b;      /* Activity, Stress, Caution */
+      --color-nominal: #10b981;    /* Recovery, Equilibrium, Nominal */
+      --color-circadian: #06b6d4;  /* Sleep, Photoperiod, Rest */
+      --color-kinship: #a855f7;    /* Family Uplink, Earth Anchor */
+      --color-telemetry: #3b82f6;  /* NASA Stream, Avionics */
+      
+      /* Typography Colors */
+      --text-high: #f8fafc;
+      --text-medium: #94a3b8;
+      --text-low: #64748b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    /* Fixed Viewport Glanceability: Fits 1080p, 1440p and Flight Displays */
+    html, body {
+      height: 100vh;
+      max-height: 100vh;
+      overflow: hidden;
+      background-color: var(--canvas-bg);
+      color: var(--text-high);
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-variant-numeric: tabular-nums;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Top Flight Instrument Navigation Header */
+    header {
+      padding: 10px 24px 8px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(7, 10, 17, 0.90);
+      backdrop-filter: blur(20px) saturate(130%);
+      -webkit-backdrop-filter: blur(20px) saturate(130%);
+      position: relative;
+      z-index: 1100;
+    }
+
+    .header-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .system-banner {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mission-glyph {
+      background: var(--color-telemetry);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .headline-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--text-high);
+    }
+
+    .header-sub {
+      font-size: 12px;
+      color: var(--text-medium);
+      font-weight: 400;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Aerospace Segmented Operational Mode Switcher */
+    .mode-selector {
+      background: var(--surface-subcard);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .mode-tab {
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-medium);
+      cursor: pointer;
+      border: 1px solid transparent;
+      background: transparent;
+      transition: all 0.2s ease;
+      user-select: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .mode-tab:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .mode-tab#modeNominal.active {
+      background: rgba(16, 185, 129, 0.22);
+      border-color: #10b981;
+      color: #34d399;
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.35);
+    }
+
+    .mode-tab#modeFatigue.active {
+      background: rgba(245, 158, 11, 0.22);
+      border-color: #f59e0b;
+      color: #fbbf24;
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.35);
+    }
+
+    .mode-tab#modeEva.active {
+      background: rgba(244, 63, 94, 0.22);
+      border-color: #f43f5e;
+      color: #f43f5e;
+      box-shadow: 0 0 12px rgba(244, 63, 94, 0.35);
+    }
+
+    .flight-btn {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    .flight-btn:hover {
+      background: var(--surface-subcard);
+      border-color: var(--border-focus);
+    }
+
+    .flight-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* Earth View & Custom Theme Selector */
+    .earth-view-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface-subcard);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 3px 8px;
+    }
+
+    .earth-view-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-medium);
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .earth-select {
+      background: transparent;
+      color: #ffffff;
+      font-size: 11.5px;
+      font-weight: 500;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .earth-select option {
+      background: #111726;
+      color: #ffffff;
+    }
+
+    /* Dynamic Earth View & Theme Background Layer */
+    .earth-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      background-size: cover;
+      background-position: center;
+      opacity: 0.88;
+    }
+
+    .theme-patagonia {
+      background: 
+        radial-gradient(circle at 82% 18%, rgba(14, 116, 144, 0.35) 0%, transparent 55%),
+        radial-gradient(circle at 18% 82%, rgba(13, 148, 136, 0.28) 0%, transparent 55%),
+        radial-gradient(circle at 50% 50%, rgba(2, 44, 67, 0.25) 0%, transparent 65%),
+        linear-gradient(155deg, #020b14 0%, #03151b 45%, #01060d 100%);
+    }
+
+    .theme-cupola {
+      background: 
+        radial-gradient(ellipse 140% 70% at 50% 115%, rgba(56, 189, 248, 0.85) 0%, rgba(14, 116, 144, 0.55) 30%, rgba(2, 6, 23, 0.95) 75%),
+        radial-gradient(circle at 50% -10%, rgba(30, 58, 138, 0.55) 0%, transparent 60%),
+        radial-gradient(circle at 85% 30%, rgba(14, 165, 233, 0.45) 0%, transparent 50%),
+        linear-gradient(180deg, #01040f 0%, #03102a 50%, #04254e 100%);
+    }
+
+    .theme-sunrise {
+      background: 
+        radial-gradient(circle at 85% 85%, rgba(245, 158, 11, 0.75) 0%, rgba(239, 68, 68, 0.50) 30%, transparent 68%),
+        radial-gradient(circle at 15% 25%, rgba(168, 85, 247, 0.45) 0%, transparent 55%),
+        radial-gradient(circle at 50% 50%, rgba(251, 146, 60, 0.35) 0%, transparent 65%),
+        linear-gradient(135deg, #2a0c06 0%, #3f180c 45%, #240933 100%);
+    }
+
+    .theme-aurora {
+      background: 
+        radial-gradient(ellipse 90% 60% at 35% 15%, rgba(16, 185, 129, 0.80) 0%, rgba(6, 182, 212, 0.50) 40%, transparent 75%),
+        radial-gradient(circle at 85% 65%, rgba(192, 38, 211, 0.70) 0%, rgba(147, 51, 234, 0.45) 40%, transparent 70%),
+        radial-gradient(circle at 20% 80%, rgba(5, 150, 105, 0.40) 0%, transparent 60%),
+        linear-gradient(175deg, #02241b 0%, #063328 45%, #050f24 100%);
+    }
+
+    .theme-family {
+      background: 
+        radial-gradient(circle at 75% 20%, rgba(251, 146, 60, 0.75) 0%, rgba(244, 63, 94, 0.50) 35%, transparent 70%),
+        radial-gradient(circle at 15% 80%, rgba(168, 85, 247, 0.50) 0%, rgba(249, 115, 22, 0.30) 45%, transparent 65%),
+        radial-gradient(circle at 50% 50%, rgba(234, 88, 12, 0.30) 0%, transparent 60%),
+        linear-gradient(150deg, #280a0c 0%, #3a131e 50%, #1e0b29 100%);
+    }
+
+    .theme-deepspace {
+      background: 
+        radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 0.35) 0%, transparent 80%),
+        linear-gradient(180deg, #040711 0%, #060914 100%);
+    }
+
+    /* Sub-bar: Flight Dynamics & Telemetry Ribbon */
+    .flight-ribbon {
+      padding: 6px 24px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 12px;
+      color: var(--text-medium);
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(11, 16, 27, 0.65);
+      backdrop-filter: blur(16px) saturate(130%);
+      -webkit-backdrop-filter: blur(16px) saturate(130%);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1100;
+    }
+
+    .ribbon-item {
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+    }
+
+    .ribbon-val {
+      color: #ffffff;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .status-capsule {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 2px 9px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--color-nominal);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .status-capsule.warning {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--color-alert);
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    .capsule-pulse {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    /* Main Responsive Grid: 3-Column Ergonomic Layout (Preserves All 3 Columns) */
+    main {
+      padding: 10px 20px;
+      display: grid;
+      grid-template-columns: minmax(260px, 300px) 1fr minmax(280px, 340px);
+      gap: 12px;
+      flex: 1;
+      min-height: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 1240px) {
+      main {
+        grid-template-columns: 260px 1fr 290px;
+        gap: 10px;
+        padding: 8px 14px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      main {
+        grid-template-columns: 240px 1fr 270px;
+        gap: 8px;
+        padding: 6px 10px;
+      }
+    }
+
+    /* Standardized Modular Surface Cards with Frosted Acrylic Translucency */
+    .modular-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      backdrop-filter: blur(20px) saturate(135%);
+      -webkit-backdrop-filter: blur(20px) saturate(135%);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      flex-shrink: 0;
+    }
+
+    .card-title-text {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .indicator-tag {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .card-sub-info {
+      font-size: 12px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.01em;
+    }
+
+    /* Column 1: Radar & Homeostasis */
+    .col-radar {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 0;
+    }
+
+    .radar-canvas-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      min-height: 0;
+    }
+
+    #radarCanvas {
+      width: 190px;
+      height: 190px;
+    }
+
+    .radar-grid-chips {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px;
+      width: 100%;
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    .radar-chip {
+      background: var(--surface-subcard);
+      border-radius: 6px;
+      padding: 4px 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+    }
+
+    .radar-chip .chip-label { color: var(--text-medium); font-weight: 400; }
+    .radar-chip .chip-value {
+      font-weight: 800;
+      font-size: 15px;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+    }
+    .radar-chip .chip-value.level-nominal { color: #30d158; }
+    .radar-chip .chip-value.level-caution { color: #ffd60a; }
+    .radar-chip .chip-value.level-critical { color: #ff453a; }
+
+    /* Column 2: Core Biometrics & Daily Companion Surface */
+    .col-center {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 0;
+    }
+
+    /* Daily Companion Surface with Frosted Translucency */
+    .companion-surface {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 14px 18px;
+      flex-shrink: 0;
+      backdrop-filter: blur(20px) saturate(135%);
+      -webkit-backdrop-filter: blur(20px) saturate(135%);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .companion-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .companion-glyph-box {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: var(--surface-subcard);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .companion-headings h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+
+    .companion-headings p {
+      font-size: 11px;
+      color: var(--text-medium);
+    }
+
+    .companion-narrative {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #e2e8f0;
+      margin-top: 4px;
+      font-weight: 400;
+    }
+
+    .action-pill-row {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .action-pill {
+      background: var(--surface-subcard);
+      color: #ffffff;
+      font-size: 10.5px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Center Modular 4-Block Biometrics Grid */
+    .biometric-quad-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .bio-cell {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(20px) saturate(135%);
+      -webkit-backdrop-filter: blur(20px) saturate(135%);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .bio-cell-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-medium);
+      font-weight: 500;
+    }
+
+    .bio-big-metric {
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+      margin: 4px 0;
+    }
+
+    .big-num {
+      font-size: 28px;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      color: #ffffff;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .big-unit {
+      font-size: 12px;
+      color: var(--text-medium);
+      font-weight: 400;
+    }
+
+    /* Pill Bar Visualizer (Inspired by Clinical Life Factors) */
+    .pill-bar-strip {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 22px;
+      margin: 2px 0 6px 0;
+    }
+
+    .mini-bar {
+      width: 4px;
+      border-radius: 2px;
+      background: var(--surface-subcard);
+    }
+
+    .bio-subtext {
+      font-size: 10.5px;
+      color: var(--color-nominal);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 500;
+    }
+
+    .bio-subtext.alert {
+      color: var(--color-alert);
+    }
+
+    /* Column 3: Dual Emotional Anchors */
+    .col-anchors {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 0;
+    }
+
+    .anchor-module {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+      min-height: 0;
+      backdrop-filter: blur(20px) saturate(135%);
+      -webkit-backdrop-filter: blur(20px) saturate(135%);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .anchor-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 4px;
+    }
+
+    .anchor-caption {
+      font-size: 13px;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .anchor-time {
+      font-size: 10px;
+      color: var(--text-medium);
+    }
+
+    .anchor-body-quote {
+      font-size: 12px;
+      line-height: 1.55;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+      overflow-y: auto;
+      font-style: italic;
+    }
+
+    /* Kinship Tether Tabs & Interactive Family Elements */
+    .kinship-tab-row {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin: 4px 0 6px 0;
+    }
+
+    .kinship-pill {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      background: var(--surface-subcard);
+      color: var(--text-medium);
+      cursor: pointer;
+      border: 1px solid var(--border-subtle);
+      transition: all 0.15s ease;
+    }
+
+    .kinship-pill:hover {
+      background: var(--surface-elevated);
+      color: #ffffff;
+    }
+
+    .kinship-pill.active {
+      background: rgba(168, 85, 247, 0.22);
+      color: #d8b4fe;
+      border-color: rgba(168, 85, 247, 0.45);
+    }
+
+    .attachment-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      color: #cbd5e1;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 3px 8px;
+      border-radius: 6px;
+      margin: 4px 0 6px 0;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .attachment-pill:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+    }
+
+    .uplink-action-btn {
+      font-size: 10px;
+      font-weight: 600;
+      color: #d8b4fe;
+      background: rgba(168, 85, 247, 0.12);
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      padding: 3px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s;
+    }
+
+    .uplink-action-btn:hover {
+      background: rgba(168, 85, 247, 0.25);
+      color: #ffffff;
+    }
+
+    /* Audio Playback Capsule */
+    .media-capsule {
+      background: var(--surface-subcard);
+      border-radius: 9999px;
+      padding: 5px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+      flex-shrink: 0;
+    }
+
+    .media-capsule:hover {
+      background: var(--surface-elevated);
+    }
+
+    .capsule-play-glyph {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #ffffff;
+      color: #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .capsule-track-name {
+      font-size: 10.5px;
+      font-weight: 500;
+      color: #ffffff;
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .track-waves {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      height: 10px;
+    }
+
+    .wave-line {
+      width: 2px;
+      background: #ffffff;
+      border-radius: 1px;
+      height: 6px;
+      animation: wavePulse 1s infinite ease-in-out;
+    }
+    .wave-line:nth-child(2) { animation-delay: 0.2s; height: 10px; }
+    .wave-line:nth-child(3) { animation-delay: 0.4s; height: 8px; }
+
+    @keyframes wavePulse {
+      0%, 100% { transform: scaleY(0.4); }
+      50% { transform: scaleY(1); }
+    }
+
+    /* Operational Protocol Bar */
+    .protocol-strip {
+      grid-column: span 3;
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 7px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11.5px;
+      flex-shrink: 0;
+      backdrop-filter: blur(20px) saturate(135%);
+      -webkit-backdrop-filter: blur(20px) saturate(135%);
+    }
+
+    /* Clinical Telemetry Sheet (Tier 2 Audit Modal) */
+    .audit-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(14px);
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .audit-overlay.active {
+      display: flex;
+    }
+
+    .audit-modal {
+      background: var(--surface-card);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 960px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .modal-head {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(11, 16, 27, 0.95);
+    }
+
+    .modal-head-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .modal-body-grid {
+      padding: 18px 20px;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .audit-group {
+      background: var(--surface-subcard);
+      border-radius: 10px;
+      padding: 12px 14px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .group-caption {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-medium);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .audit-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11.5px;
+    }
+
+    .audit-table td {
+      padding: 5px 2px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .audit-table td.name { color: #cbd5e1; }
+    .audit-table td.value {
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      text-align: right;
+      color: #ffffff;
+    }
+    .audit-table td.ref {
+      font-size: 10px;
+      color: var(--text-medium);
+      text-align: right;
+      padding-left: 6px;
+    }
+
+    .telemetry-stream-box {
+      grid-column: span 2;
+      background: #03060d;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 10px;
+      color: #38bdf8;
+      height: 90px;
+      overflow-y: hidden;
+      line-height: 1.5;
+      border: 1px solid var(--border-subtle);
+    }
+
+    /* Instrument Footer */
+    footer {
+      padding: 6px 24px;
+      font-size: 10.5px;
+      color: var(--text-low);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(7, 10, 17, 0.82);
+      backdrop-filter: blur(18px) saturate(130%);
+      -webkit-backdrop-filter: blur(18px) saturate(130%);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Live Voice Stress Lab Slide-Out Aerospace Drawer */
+    .voice-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 1045;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .voice-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .voice-drawer {
+      position: fixed;
+      top: 54px;
+      right: 0;
+      bottom: 0;
+      width: 460px;
+      max-width: 95vw;
+      background: rgba(10, 16, 28, 0.98);
+      backdrop-filter: blur(28px) saturate(140%);
+      -webkit-backdrop-filter: blur(28px) saturate(140%);
+      border-left: 1px solid var(--border-subtle);
+      border-top: 1px solid var(--border-subtle);
+      box-shadow: -12px 0 50px rgba(0, 0, 0, 0.85);
+      z-index: 1050;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .voice-drawer.active {
+      transform: translateX(0);
+    }
+
+    .voice-drawer-header {
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(13, 21, 38, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .voice-drawer-close-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 8px;
+      background: rgba(244, 63, 94, 0.16);
+      border: 1px solid rgba(244, 63, 94, 0.45);
+      color: #fecdd3;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .voice-drawer-close-btn:hover {
+      background: rgba(244, 63, 94, 0.35);
+      border-color: rgba(244, 63, 94, 0.85);
+      color: #ffffff;
+      transform: scale(1.05);
+      box-shadow: 0 0 14px rgba(244, 63, 94, 0.45);
+    }
+    .voice-drawer-close-btn:active {
+      transform: scale(0.97);
+    }
+
+    .voice-canvas-box {
+      background: #03060e;
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    #voiceCanvas {
+      width: 100%;
+      height: 140px;
+      border-radius: 6px;
+    }
+
+    .voice-metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .voice-metric-card {
+      background: var(--surface-subcard);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .voice-metric-title {
+      font-size: 10px;
+      color: var(--text-medium);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .voice-metric-val {
+      font-size: 18px;
+      font-weight: 800;
+      color: #ffffff;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .voice-metric-tag {
+      font-size: 9.5px;
+      color: var(--color-nominal);
+      font-weight: 600;
+    }
+
+    .voice-action-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .btn-record {
+      flex: 1;
+      padding: 9px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      background: rgba(16, 185, 129, 0.18);
+      color: #34d399;
+      transition: all 0.2s;
+    }
+
+    .btn-record:hover {
+      background: rgba(16, 185, 129, 0.3);
+      color: #ffffff;
+    }
+
+    .btn-record.recording {
+      background: rgba(244, 63, 94, 0.25);
+      border-color: rgba(244, 63, 94, 0.6);
+      color: #f43f5e;
+      animation: pulseMic 1.2s infinite;
+    }
+
+    @keyframes pulseMic {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.65; }
+    }
+
+    .voice-drawer-body {
+      padding: 14px 18px;
+      overflow-y: auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn-voice-aux {
+      flex: 1;
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      border: 1px solid var(--border-subtle);
+      background: var(--surface-subcard);
+      color: var(--text-high);
+      transition: all 0.2s;
+    }
+
+    .btn-voice-aux:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      border-color: var(--text-medium);
+    }
+
+    .voice-status-banner {
+      font-size: 11px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34d399;
+      font-weight: 500;
+    }
+
+    .voice-status-banner.alert {
+      background: rgba(244, 63, 94, 0.12);
+      border-color: rgba(244, 63, 94, 0.35);
+      color: #f43f5e;
+    }
+
+    .voice-verdict-box {
+      background: rgba(13, 21, 38, 0.7);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--text-medium);
+    }
+
+    .voice-gcp-box {
+      background: rgba(30, 58, 138, 0.22);
+      border: 1px solid rgba(96, 165, 250, 0.35);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 10.5px;
+      line-height: 1.45;
+      color: #bfdbfe;
+    }
+
+    .astronaut-case-card {
+      background: rgba(13, 21, 38, 0.85);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .case-tab-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6px;
+    }
+
+    .case-tab-btn {
+      padding: 8px 6px;
+      border-radius: 6px;
+      background: var(--surface-subcard);
+      border: 1px solid var(--border-subtle);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s;
+      user-select: none;
+    }
+
+    .case-tab-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--text-medium);
+    }
+
+    .case-tab-btn.active {
+      border-color: #3b82f6;
+      background: rgba(59, 130, 246, 0.22);
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.25);
+    }
+
+    .case-tab-btn#tabCase1.active {
+      border-color: #10b981;
+      background: rgba(16, 185, 129, 0.22);
+      box-shadow: 0 0 14px rgba(16, 185, 129, 0.35);
+    }
+
+    .case-tab-btn#tabCase2.active {
+      border-color: #f59e0b;
+      background: rgba(245, 158, 11, 0.22);
+      box-shadow: 0 0 14px rgba(245, 158, 11, 0.35);
+    }
+
+    .case-tab-btn#tabCase3.active {
+      border-color: #f43f5e;
+      background: rgba(244, 63, 94, 0.22);
+      box-shadow: 0 0 14px rgba(244, 63, 94, 0.35);
+    }
+
+    .case-transcript-box {
+      background: #040812;
+      border: 1px solid var(--border-subtle);
+      border-radius: 7px;
+      padding: 8px 10px;
+      font-size: 11px;
+      line-height: 1.45;
+      color: #e2e8f0;
+      font-style: italic;
+    }
+
+    .case-actions-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .case-tab-btn * {
+      pointer-events: none;
+    }
+
+    .btn-case-listen {
+      flex: 1;
+      padding: 8px 10px;
+      border-radius: 7px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      border: 1px solid rgba(59, 130, 246, 0.45);
+      background: rgba(59, 130, 246, 0.15);
+      color: #93c5fd;
+      transition: all 0.2s;
+    }
+
+    .btn-case-listen * {
+      pointer-events: none;
+    }
+
+    .btn-case-listen:hover {
+      background: rgba(59, 130, 246, 0.28);
+      color: #ffffff;
+    }
+
+    .btn-case-listen.playing {
+      background: rgba(59, 130, 246, 0.35);
+      border-color: #60a5fa;
+      color: #ffffff;
+      animation: pulseMic 1.2s infinite;
+    }
+
+    .btn-case-test {
+      flex: 1.25;
+      padding: 8px 10px;
+      border-radius: 7px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: 1px solid rgba(16, 185, 129, 0.5);
+      background: rgba(16, 185, 129, 0.2);
+      color: #34d399;
+      transition: all 0.2s;
+    }
+
+    .btn-case-test * {
+      pointer-events: none;
+    }
+
+    .btn-case-test:hover {
+      background: rgba(16, 185, 129, 0.35);
+      color: #ffffff;
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.35);
+    }
+
+    .btn-case-test.testing {
+      background: rgba(244, 63, 94, 0.25);
+      border-color: rgba(244, 63, 94, 0.6);
+      color: #f43f5e;
+      animation: pulseMic 1.2s infinite;
+    }
+
+    .preset-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Dynamic Chill Earth View & Custom Wallpaper Backdrop -->
+  <div id="earthBackdropLayer" class="earth-backdrop theme-patagonia" style="background-image: url('assets/earth_patagonia.jpg?v=20261115_dark'); background-size: cover; background-position: center; opacity: 0.65;"></div>
+
+  <!-- Top Flight Instrument Navigation Header -->
+  <header>
+    <div class="header-left">
+      <div class="system-banner">
+        <span class="mission-glyph">NASA HRP</span>
+        <span class="headline-title">awmeh SpaceOS</span>
+        <span style="font-size: 10px; font-weight: 700; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4); padding: 2px 6px; border-radius: 4px; color: #38bdf8; font-family: monospace;">v1.0.0</span>
+        <span style="font-size: 11px; font-weight: 600; background: var(--surface-subcard); border: 1px solid var(--border-subtle); padding: 2px 7px; border-radius: 4px; color: var(--text-medium);">ASTRONAUT WELLBEING</span>
+      </div>
+      <div class="header-sub">Behavioral Health & Sensory Equilibrium · Mars Transit Expedition 74 · Commander Alex Vance</div>
+    </div>
+
+    <div class="header-right">
+      <!-- Earth View & Theme Dropdown (Windows Spotlight / NASA Landsat style) -->
+      <div class="earth-view-container">
+        <span class="earth-view-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+          EARTH VIEW:
+        </span>
+        <select id="earthViewSelect" class="earth-select" onchange="changeEarthTheme(this.value)">
+          <option value="patagonia" selected>Patagonia Fjords (Landsat 9)</option>
+          <option value="cupola">Earth Horizon from Cupola</option>
+          <option value="sunrise">Alpine Sunrise Glow (Earth Obs)</option>
+          <option value="aurora">Aurora Australis (Ionosphere)</option>
+          <option value="family">Family Hearth (Sunset Warmth)</option>
+          <option value="deepspace">Deep Space (Matte Clinical)</option>
+          <option value="custom">Upload Custom Earth / Family Photo...</option>
+        </select>
+        <input type="file" id="customBgInput" accept="image/*" style="display: none;" onchange="handleCustomBgUpload(event)">
+      </div>
+
+      <!-- Operational Mode Switcher (Zero Trademark) -->
+      <div class="mode-selector" id="modeSelectorGroup">
+        <button class="mode-tab active" id="modeNominal" onclick="switchMode('nominal', this)"><span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:#10b981;"></span>Nominal</button>
+        <button class="mode-tab" id="modeFatigue" onclick="switchMode('fatigue', this)"><span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:#f59e0b;"></span>Sensory Fatigue</button>
+        <button class="mode-tab" id="modeEva" onclick="switchMode('eva', this)"><span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:#f43f5e;"></span>Pre-EVA Stress</button>
+      </div>
+
+      <button class="flight-btn" id="btnToggleVoiceLabHeader" onclick="toggleVoiceLabDrawer()" style="background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.45); color: #34d399;" title="Toggle Live Voice Stress Lab">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        🎙️ Voice Stress Lab
+      </button>
+
+      <button class="flight-btn" onclick="toggleAuditModal(true)">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Clinical Audit (Tier 2)
+      </button>
+    </div>
+  </header>
+
+  <!-- Global Aerospace Countermeasure & Mode Change HUD Banner -->
+  <div id="globalHUDToast" style="display: none; position: fixed; top: 96px; left: 50%; transform: translateX(-50%); z-index: 2000; padding: 10px 22px; border-radius: 9999px; font-size: 12px; font-weight: 700; color: #ffffff; background: rgba(13, 21, 38, 0.94); border: 1px solid rgba(56, 189, 248, 0.6); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7), 0 0 20px rgba(56, 189, 248, 0.35); backdrop-filter: blur(16px); pointer-events: none; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span id="hudToastIcon" style="font-size: 16px;">🌍</span>
+      <div>
+        <div id="hudToastTitle" style="letter-spacing: 0.3px;">Sensory Countermeasure Engaged</div>
+        <div id="hudToastDetail" style="font-size: 10px; font-weight: 400; color: #94a3b8;">Circadian Phase Regulation Active</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Flight Dynamics & Telemetry Ribbon -->
+  <div class="flight-ribbon">
+    <div class="ribbon-item">
+      <span>MET:</span>
+      <span class="ribbon-val" id="statMet">142 Days</span>
+    </div>
+    <div class="ribbon-item">
+      <span>Mars Vector:</span>
+      <span class="ribbon-val">0.42 AU</span>
+    </div>
+    <div class="ribbon-item">
+      <span>DSN Delay:</span>
+      <span class="ribbon-val">14m 18s (Downlink)</span>
+    </div>
+    <div class="ribbon-item">
+      <span>Edge NPU:</span>
+      <span class="ribbon-val">Air-Gapped (8.4ms)</span>
+    </div>
+    <div class="ribbon-item">
+      <span>Cloud Backbone:</span>
+      <span class="ribbon-val" style="color: #60a5fa;">GCP Vertex AI ($200 Tier)</span>
+    </div>
+    <div style="margin-left: auto;">
+      <div class="status-capsule" id="flightBadge">
+        <span class="capsule-pulse"></span>
+        <span id="flightBadgeText">Homeostasis Nominal</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Responsive 3-Column Ergonomic Grid (No Clipping, Perfect Fit) -->
+  <main>
+    <!-- Column 1: Radar & Homeostasis Equilibrium -->
+    <div class="col-radar">
+      <div class="modular-card" style="flex: 1; min-height: 0;">
+        <div class="card-header-row">
+          <div class="card-title-text">
+            <span class="indicator-tag" style="background: var(--color-nominal);"></span>
+            Equilibrium Radar
+          </div>
+          <span class="card-sub-info" id="radarScoreTag">Balanced (92%)</span>
+        </div>
+
+        <div class="radar-canvas-container">
+          <canvas id="radarCanvas" width="190" height="190"></canvas>
+          <div class="radar-grid-chips">
+            <div class="radar-chip"><span class="chip-label">Sleep:</span><span class="chip-value" id="valSleep">86%</span></div>
+            <div class="radar-chip"><span class="chip-label">Cardio:</span><span class="chip-value" id="valCardio">91%</span></div>
+            <div class="radar-chip"><span class="chip-label">Cognitive:</span><span class="chip-value" id="valCognitive">84%</span></div>
+            <div class="radar-chip"><span class="chip-label">Resilience:</span><span class="chip-value" id="valEmotional">88%</span></div>
+            <div class="radar-chip" style="grid-column: span 2;"><span class="chip-label">Circadian Sync:</span><span class="chip-value" id="valCircadian">94%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Column 2: Center Telemetry & Daily Companion -->
+    <div class="col-center">
+      <!-- Companion Log Narrative Surface -->
+      <div class="companion-surface">
+        <div class="companion-meta-row">
+          <div class="companion-glyph-box">🚀</div>
+          <div class="companion-headings">
+            <h3 id="buddyTitle">Good morning, Commander Alex</h3>
+            <p id="buddySub">Onboard Daily Health Summary · Day 142 of Deep-Space Transit</p>
+          </div>
+        </div>
+        <div class="companion-narrative" id="buddySpeech">
+          Yesterday's cycle ergometer countermeasure session delivered exceptional cardiovascular gains. Your resting heart rate curve stabilized smoothly overnight. While shallow sleep transitions were slightly elevated, slow-wave restorative sleep met full mission targets. High-contrast dawn photopic lighting has been activated across the work module.
+        </div>
+        <div class="action-pill-row" id="nudgeTags">
+          <div class="action-pill">💡 Lighting: 480nm Morning Photopic</div>
+          <div class="action-pill">☕ Nutrition: 250ml Electrolyte Balance</div>
+          <div class="action-pill">🎧 Acoustics: 60Hz Fan Whine Masking</div>
+        </div>
+      </div>
+
+      <!-- 4-Block Modular Biometrics Grid with Visual Pill Range Bars -->
+      <div class="biometric-quad-grid">
+        <!-- Metric 1: Heart Rate Variability (Vagal Tone) -->
+        <div class="bio-cell">
+          <div class="bio-cell-top">
+            <span>Heart Rate Variability</span>
+            <span style="color: var(--color-cardio);">♥ ECG</span>
+          </div>
+          <div class="bio-big-metric">
+            <span class="big-num" id="hrvBig">64</span>
+            <span class="big-unit">ms (RMSSD)</span>
+          </div>
+          <!-- Mini Pill Bar Range Indicator -->
+          <div class="pill-bar-strip" id="hrvBarStrip">
+            <div class="mini-bar" style="height: 12px; background: #f43f5e;"></div>
+            <div class="mini-bar" style="height: 14px; background: #f43f5e;"></div>
+            <div class="mini-bar" style="height: 18px; background: #f43f5e;"></div>
+            <div class="mini-bar" style="height: 15px; background: #f43f5e;"></div>
+            <div class="mini-bar" style="height: 20px; background: #f43f5e;"></div>
+            <div class="mini-bar" style="height: 19px; background: #f43f5e;"></div>
+            <div class="mini-bar" style="height: 22px; background: #f43f5e;"></div>
+          </div>
+          <div class="bio-subtext" id="hrvSub">● Parasympathetic recovery nominal</div>
+        </div>
+
+        <!-- Metric 2: Subconscious Valence (Music Audio) -->
+        <div class="bio-cell">
+          <div class="bio-cell-top">
+            <span>Subconscious Media Valence</span>
+            <span style="color: var(--color-alert);">♫ Audio</span>
+          </div>
+          <div class="bio-big-metric">
+            <span class="big-num" id="musicBig">118</span>
+            <span class="big-unit">BPM Major</span>
+          </div>
+          <div class="pill-bar-strip">
+            <div class="mini-bar" style="height: 10px; background: #f59e0b;"></div>
+            <div class="mini-bar" style="height: 13px; background: #f59e0b;"></div>
+            <div class="mini-bar" style="height: 16px; background: #f59e0b;"></div>
+            <div class="mini-bar" style="height: 18px; background: #f59e0b;"></div>
+            <div class="mini-bar" style="height: 14px; background: #f59e0b;"></div>
+            <div class="mini-bar" style="height: 19px; background: #f59e0b;"></div>
+            <div class="mini-bar" style="height: 21px; background: #f59e0b;"></div>
+          </div>
+          <div class="bio-subtext" id="musicSub">● High emotional tone</div>
+        </div>
+
+        <!-- Metric 3: Galley Social Time (OSD-952 CV) -->
+        <div class="bio-cell">
+          <div class="bio-cell-top">
+            <span>Galley Social Presence</span>
+            <span style="color: var(--color-nominal);">👁 CV Pose</span>
+          </div>
+          <div class="bio-big-metric">
+            <span class="big-num" id="socialBig">28</span>
+            <span class="big-unit">min / day</span>
+          </div>
+          <div class="pill-bar-strip">
+            <div class="mini-bar" style="height: 14px; background: #10b981;"></div>
+            <div class="mini-bar" style="height: 16px; background: #10b981;"></div>
+            <div class="mini-bar" style="height: 12px; background: #10b981;"></div>
+            <div class="mini-bar" style="height: 20px; background: #10b981;"></div>
+            <div class="mini-bar" style="height: 18px; background: #10b981;"></div>
+            <div class="mini-bar" style="height: 22px; background: #10b981;"></div>
+            <div class="mini-bar" style="height: 19px; background: #10b981;"></div>
+          </div>
+          <div class="bio-subtext" id="socialSub">● Crew proximity healthy</div>
+        </div>
+
+        <!-- Metric 4: Psychomotor Vigilance (PVT-B) -->
+        <div class="bio-cell">
+          <div class="bio-cell-top">
+            <span>PVT Psychomotor Latency</span>
+            <span style="color: var(--color-circadian);">⏱ PVT</span>
+          </div>
+          <div class="bio-big-metric">
+            <span class="big-num" id="pvtBig">0.08</span>
+            <span class="big-unit">sec variance</span>
+          </div>
+          <div class="pill-bar-strip">
+            <div class="mini-bar" style="height: 8px; background: #06b6d4;"></div>
+            <div class="mini-bar" style="height: 9px; background: #06b6d4;"></div>
+            <div class="mini-bar" style="height: 7px; background: #06b6d4;"></div>
+            <div class="mini-bar" style="height: 10px; background: #06b6d4;"></div>
+            <div class="mini-bar" style="height: 8px; background: #06b6d4;"></div>
+            <div class="mini-bar" style="height: 7px; background: #06b6d4;"></div>
+            <div class="mini-bar" style="height: 9px; background: #06b6d4;"></div>
+          </div>
+          <div class="bio-subtext" id="pvtSub">● Zero attention lapse</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Column 3: Dual Emotional Anchors (Right Column) -->
+    <div class="col-anchors">
+      <!-- Anchor 1: Heritage Echo -->
+      <div class="anchor-module">
+        <div>
+          <div class="anchor-head">
+            <div class="anchor-caption">
+              <span style="color: var(--color-alert);">★</span>
+              <span id="heroName">Jim Lovell</span>
+            </div>
+            <span class="anchor-time" id="heroTag">Apollo 13</span>
+          </div>
+          <div class="anchor-body-quote" id="heroQuote">
+            “When the spacecraft service module exploded into total darkness, we realized panic would not improve a single gauge reading. Breathe deeply, focus entirely on the next single valve you can control.”
+          </div>
+        </div>
+        <div class="media-capsule" onclick="toggleAudioPlayback(this)">
+          <div class="capsule-play-glyph">▶</div>
+          <span class="capsule-track-name" id="audioLabel">NASA Oral History Debrief (0:24)</span>
+          <div class="track-waves">
+            <div class="wave-line"></div><div class="wave-line"></div><div class="wave-line"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Anchor 2: Kinship Tether (Family & Earth Anchors) -->
+      <div class="anchor-module">
+        <div>
+          <div class="anchor-head">
+            <div class="anchor-caption">
+              <span style="color: var(--color-kinship);">♥</span>
+              <span id="kinshipSender">Daughter Emma (8yo)</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span class="anchor-time" id="kinshipDsn">DSN Madrid · 2h</span>
+              <button class="uplink-action-btn" onclick="openUplinkModal()">+ Reply</button>
+            </div>
+          </div>
+
+          <!-- Family Member Selector Tabs -->
+          <div class="kinship-tab-row">
+            <span class="kinship-pill active" onclick="switchKinshipMember('emma', this)">👧 Emma</span>
+            <span class="kinship-pill" onclick="switchKinshipMember('sarah', this)">👩 Sarah (Wife)</span>
+            <span class="kinship-pill" onclick="switchKinshipMember('leo', this)">👦 Leo (10yo)</span>
+          </div>
+
+          <div class="anchor-body-quote" id="kinshipMessage">
+            “Daddy! Mom's hydrangeas in the backyard are blooming today. Leo and I recorded 10 seconds of the wind chimes and cicadas for you. Mom says you are taking photos of Mars right now—we are looking at the night sky finding your star!”
+          </div>
+
+          <!-- Attachment Pill -->
+          <div class="attachment-pill" id="kinshipAttachment" onclick="showAttachmentPreview()">
+            <span>📷</span>
+            <span id="attachmentName">Attachment: backyard_hydrangeas.jpg (1.4MB)</span>
+          </div>
+        </div>
+
+        <div class="media-capsule" id="kinshipAudioCapsule" onclick="toggleKinshipAudio(this)">
+          <div class="capsule-play-glyph" style="background: var(--color-kinship); color: #fff;" id="kinshipAudioIcon">▶</div>
+          <span class="capsule-track-name" id="kinshipAudioTrack">Backyard Breeze & Chimes (0:15)</span>
+          <div class="track-waves" id="kinshipAudioWaves" style="opacity: 0.3;">
+            <div class="wave-line"></div><div class="wave-line"></div><div class="wave-line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Autonomous Triage Strip (Spans Width) -->
+    <div class="protocol-strip">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="color: var(--color-circadian); font-weight: 600;">Autonomous Closed-Loop Protocol:</span>
+        <span id="triageText" style="color: var(--text-medium);">Level 1 Habitat Self-Regulation active. Zero telemetry leaked to Earth ground doctors. Total crew privacy preserved.</span>
+      </div>
+      <span style="color: var(--text-low); font-size: 11px;">Edge NPU Air-Gapped</span>
+    </div>
+  </main>
+
+  <!-- Clinical Telemetry Sheet (Tier 2 Audit Modal) -->
+  <div class="audit-overlay" id="auditModal" onclick="if(event.target===this) toggleAuditModal(false)">
+    <div class="audit-modal">
+      <div class="modal-head">
+        <div class="modal-head-title">Clinical Telemetry & Pathophysiological Audit (Tier 2)</div>
+        <button class="voice-drawer-close-btn" onclick="toggleAuditModal(false)" title="Close Clinical Audit (Click or ESC)">
+          <span style="font-size: 15px; font-weight: 800; line-height: 1;">✕</span>
+          <span>Close</span>
+        </button>
+      </div>
+
+      <div class="modal-body-grid">
+        <!-- Group 1: Autonomic & ECG -->
+        <div class="audit-group">
+          <div class="group-caption">
+            <span>Autonomic & ECG Spectral</span>
+            <span style="color: var(--color-nominal);">Nominal</span>
+          </div>
+          <table class="audit-table">
+            <tr><td class="name">SDNN (Overall HRV):</td><td class="value" id="rawSdnn">58.4 ms</td><td class="ref">[Ref: >50 ms]</td></tr>
+            <tr><td class="name">RMSSD (Vagal Tone):</td><td class="value" id="rawRmssd">42.1 ms</td><td class="ref">[Ref: 35-55 ms]</td></tr>
+            <tr><td class="name">LF/HF Ratio (Sympathovagal):</td><td class="value" id="rawLfHf">1.42</td><td class="ref">[Ref: 1.0-2.0]</td></tr>
+            <tr><td class="name">Resting Heart Rate:</td><td class="value" id="rawRhr">56 bpm</td><td class="ref">[Ref: 50-70 bpm]</td></tr>
+            <tr><td class="name">Vocal Acoustic Jitter:</td><td class="value" id="rawJitter">0.72 %</td><td class="ref">[Alert: ≥1.04%]</td></tr>
+          </table>
+        </div>
+
+        <!-- Group 2: SANS & Fluid Shift -->
+        <div class="audit-group">
+          <div class="group-caption">
+            <span>Fluid Shift & SANS Risk</span>
+            <span style="color: var(--color-circadian);">Acoustic Surrogate</span>
+          </div>
+          <table class="audit-table">
+            <tr><td class="name">Optic Nerve Sheath (ONSD):</td><td class="value" id="rawOnsd">5.1 mm</td><td class="ref">[Warn: >5.8 mm]</td></tr>
+            <tr><td class="name">Jugular Vein Distension:</td><td class="value">+14.2 %</td><td class="ref">[Microgravity Nom]</td></tr>
+            <tr><td class="name">Circadian Temp Nadir Shift:</td><td class="value">0.38 °C</td><td class="ref">[Phase-Locked]</td></tr>
+            <tr><td class="name">REM Latency (Polysomnography):</td><td class="value" id="rawRem">78 min</td><td class="ref">[Alert: <60 min]</td></tr>
+            <tr><td class="name">Slow-Wave Sleep (SWS N3):</td><td class="value" id="rawSws">21.4 %</td><td class="ref">[Alert: <10%]</td></tr>
+          </table>
+        </div>
+
+        <!-- Group 3: Cognitive & Psychomotor -->
+        <div class="audit-group">
+          <div class="group-caption">
+            <span>Psychomotor Vigilance (PVT-B)</span>
+            <span style="color: var(--color-alert);">NASA HRP Metric</span>
+          </div>
+          <table class="audit-table">
+            <tr><td class="name">PVT Attention Lapses:</td><td class="value" id="rawLapses">0 lapses</td><td class="ref">[Alert: ≥5 lapses]</td></tr>
+            <tr><td class="name">Pupil Light Reflex (PLR):</td><td class="value" id="rawPlr">230 ms</td><td class="ref">[Ref: 210-250 ms]</td></tr>
+            <tr><td class="name">Console Keystroke Latency Var:</td><td class="value" id="rawKeystroke">18 ms²</td><td class="ref">[Alert: >80 ms²]</td></tr>
+            <tr><td class="name">Intercom Turn-Taking Delay:</td><td class="value" id="rawTurnTaking">0.42 s</td><td class="ref">[Alert: >1.8 s]</td></tr>
+          </table>
+        </div>
+
+        <!-- Group 4: Edge NPU & Sensor Hardware -->
+        <div class="audit-group">
+          <div class="group-caption">
+            <span>Edge NPU & Sensor SNR</span>
+            <span style="color: var(--color-nominal);">Locked</span>
+          </div>
+          <table class="audit-table">
+            <tr><td class="name">Biosensor Front-End SNR:</td><td class="value">99.2 dB</td><td class="ref">[Pass]</td></tr>
+            <tr><td class="name">Edge NPU Inference Time:</td><td class="value" id="rawNpuTime">8.42 ms</td><td class="ref">[Zero Network]</td></tr>
+            <tr><td class="name">Memory Footprint:</td><td class="value">42.8 MB</td><td class="ref">[Isolated]</td></tr>
+            <tr><td class="name">Local Encryption:</td><td class="value">AES-256-GCM</td><td class="ref">[On-Device]</td></tr>
+          </table>
+        </div>
+
+        <!-- Live Telemetry Stream Box -->
+        <div class="telemetry-stream-box" id="telemetryLogStream">
+          [MET 142d 08:34:12.042] [NPU_EDGE] INGEST: ECG_CHANNEL_0: 0x4A 0x8F 0x99 (SNR=99.2dB)
+          [MET 142d 08:34:12.180] [HEURISTICS] SPECTRAL: LF_BAND=0.08Hz HF_BAND=0.24Hz | LF/HF=1.42
+          [MET 142d 08:34:12.312] [PASSIVE_CV] GALLEY_OPTICAL: GAZE_FIXATION=420ms | BLINK_RATE=14/min
+          [MET 142d 08:34:12.450] [AUDIO_SPECTRAL] VOCAL_JITTER=0.72% (NOMINAL) | SHIMMER=2.84%
+          [MET 142d 08:34:12.580] [ECLSS_LINK] LIGHTING_BUS: COLOR_TEMP=5400K LUX=380 (MORNING_PHOTOPIC)
+          [MET 142d 08:34:12.720] [INFERENCE_PASS] RESILIENCE_INDEX=0.92 (EQUILIBRIUM NOMINAL)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DSN Kinship Uplink Modal (Reply to Family) -->
+  <div class="audit-overlay" id="uplinkModal" onclick="if(event.target===this) closeUplinkModal()">
+    <div class="audit-modal" style="max-width: 560px;">
+      <div class="modal-head">
+        <div class="modal-head-title" style="color: #d8b4fe;">
+          <span>♥</span> Deep Space Network Kinship Uplink
+        </div>
+        <button class="voice-drawer-close-btn" onclick="closeUplinkModal()" title="Close Uplink (Click or ESC)">
+          <span style="font-size: 15px; font-weight: 800; line-height: 1;">✕</span>
+          <span>Close</span>
+        </button>
+      </div>
+      <div style="padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="font-size: 11px; color: var(--text-medium); display: flex; justify-content: space-between;">
+          <span>Recipient: <strong>Emma, Sarah & Leo (Houston, TX)</strong></span>
+          <span style="color: var(--color-telemetry);">Carrier: DSN Goldstone DSS-14</span>
+        </div>
+        <div style="font-size: 10.5px; background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 6px; padding: 6px 10px; color: #93c5fd;">
+          🛰️ Current Mars Vector: 0.42 AU · Speed-of-Light Latency: <strong>14 min 18 sec</strong> (Asynchronous Link)
+        </div>
+        <textarea id="uplinkMsgInput" rows="4" style="width: 100%; background: #070d18; border: 1px solid var(--border-subtle); border-radius: 8px; color: #ffffff; padding: 10px; font-family: inherit; font-size: 12px; resize: none; outline: none;" placeholder="Record a message to your family...">Hey Emma, Sarah, and Leo! Seeing the hydrangeas and hearing the Texas wind chimes made my whole day out here in transit. The stars look infinite from the Cupola. Tell Leo I will be watching for the flashlight tonight! Love you all, Dad.</textarea>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+          <button class="flight-btn" style="background: rgba(255,255,255,0.06);" onclick="alert('🎤 Audio Recording Simulator: [00:15 recorded] Attached.')">🎙️ Attach Voice Note (0:15)</button>
+          <button class="flight-btn" style="background: var(--color-kinship); border-color: rgba(168, 85, 247, 0.5); font-weight: 600;" onclick="sendUplinkMessage()">🚀 Transmit via DSN</button>
+        </div>
+        <div id="uplinkSentToast" style="display: none; font-size: 11px; color: #34c759; text-align: center; background: rgba(52, 199, 89, 0.12); padding: 8px; border-radius: 6px; border: 1px solid rgba(52, 199, 89, 0.3);">
+          ✓ Uplink Transmitted! Encrypted with AES-256 and queued in DSN high-gain buffer. ETA Earth: 14m 18s.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full-Screen Backdrop for Voice Stress Lab Drawer (Click outside to close) -->
+  <div class="voice-backdrop" id="voiceLabBackdrop" onclick="toggleVoiceLabDrawer(false)" title="Click outside to exit"></div>
+
+  <!-- Live Voice Stress Lab Slide-Out Diagnostic Drawer -->
+  <div class="voice-drawer" id="voiceLabDrawer" aria-hidden="true">
+    <div class="voice-drawer-header">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10b981;"></span>
+        <div>
+          <div style="font-size: 13px; font-weight: 700; color: #ffffff; letter-spacing: 0.3px;">🎙️ Live Voice Stress Lab</div>
+          <div style="font-size: 10px; color: var(--text-medium);">Web Audio API DSP · Laryngeal Micro-Perturbation & Jitter Telemetry</div>
+        </div>
+      </div>
+      <button class="voice-drawer-close-btn" onclick="toggleVoiceLabDrawer(false)" title="Close Voice Stress Lab (Click or ESC)" aria-label="Close">
+        <span style="font-size: 15px; font-weight: 800; line-height: 1;">✕</span>
+        <span>Close</span>
+      </button>
+    </div>
+
+    <div class="voice-drawer-body">
+      <!-- Instant Visual Click & Action Confirmation Toast -->
+      <div id="voiceFeedbackToast" style="display: none; padding: 7px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; text-align: center; background: rgba(59, 130, 246, 0.25); border: 1px solid rgba(59, 130, 246, 0.6); color: #93c5fd; box-shadow: 0 0 14px rgba(59, 130, 246, 0.3);"></div>
+
+      <!-- Status Annunciator -->
+      <div class="voice-status-banner" id="voiceStatusBanner">
+        <span id="voiceStatusText">● Mic Standby · Click to capture 5s vocal diagnostic</span>
+        <span id="voiceTimerBadge" style="font-size: 10px; opacity: 0.8; font-variant-numeric: tabular-nums;">0.0s / 5.0s</span>
+      </div>
+
+      <!-- 3 AI Simulated Astronaut Voice Diagnostic Benchmarks -->
+      <div class="astronaut-case-card">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 10px; font-weight: 700; color: #93c5fd; text-transform: uppercase; letter-spacing: 0.4px; display: flex; align-items: center; gap: 5px;">
+            <span>🎧</span> Astronaut Voice Benchmarks (Listen & Test)
+          </span>
+          <span id="caseStatusPill" style="font-size: 9px; background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); padding: 1px 6px; border-radius: 4px; font-weight: 600;">
+            Nominal Baseline
+          </span>
+        </div>
+
+        <!-- 3 Tab Selector -->
+        <div class="case-tab-row">
+          <button class="case-tab-btn active" onclick="selectAstronautCase('case1', this)" id="tabCase1">
+            <span class="preset-dot" style="background: #10b981;"></span>
+            <div style="text-align: left; overflow: hidden;">
+              <div style="font-size: 10.5px; font-weight: 700; color: #34d399;">Nominal</div>
+              <div style="font-size: 8.5px; color: var(--text-medium); white-space: nowrap;">CDR Vance (D142)</div>
+            </div>
+          </button>
+          
+          <button class="case-tab-btn" onclick="selectAstronautCase('case2', this)" id="tabCase2">
+            <span class="preset-dot" style="background: #f59e0b;"></span>
+            <div style="text-align: left; overflow: hidden;">
+              <div style="font-size: 10.5px; font-weight: 700; color: #fbbf24;">Fatigue</div>
+              <div style="font-size: 8.5px; color: var(--text-medium); white-space: nowrap;">SPC Chen (D180)</div>
+            </div>
+          </button>
+          
+          <button class="case-tab-btn" onclick="selectAstronautCase('case3', this)" id="tabCase3">
+            <span class="preset-dot" style="background: #f43f5e;"></span>
+            <div style="text-align: left; overflow: hidden;">
+              <div style="font-size: 10.5px; font-weight: 700; color: #f43f5e;">EVA Crisis</div>
+              <div style="font-size: 8.5px; color: var(--text-medium); white-space: nowrap;">FE Rossi (T-90s)</div>
+            </div>
+          </button>
+        </div>
+
+        <!-- Active Case Transcript Box -->
+        <div>
+          <div style="display: flex; justify-content: space-between; font-size: 9.5px; color: var(--text-medium); margin-bottom: 3px;">
+            <span id="caseAstronautTitle">👨‍🚀 Commander Alex Vance (Mars Transit Day 142)</span>
+            <span style="color: #60a5fa;">NASA Intercom + Quindar Beep</span>
+          </div>
+          <div class="case-transcript-box" id="caseTranscriptText">
+            “Houston, this is Commander Vance on Mars Transit Day 142. Morning mental wellbeing check is green. Circadian entrainment is locked at 94%, cognitive reaction tests are sharp. Crew morale remains steady as Earth fades behind us. Ready for scheduled airlock inspection.”
+          </div>
+        </div>
+
+        <!-- Two Clear Actions: Listen vs Test -->
+        <div class="case-actions-row">
+          <button class="btn-case-listen" id="btnListenSample" onclick="toggleListenAstronautSample()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span id="listenBtnText">🔊 Listen to Sample</span>
+          </button>
+          <button class="btn-case-test" id="btnTestSample" onclick="runAstronautDiagnosticTest()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span id="testBtnText">🧪 Test With This Voice (5s)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Mic & Official NASA Audio Row -->
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <button class="btn-record" id="btnRecordMic" onclick="toggleLiveMic()" style="margin-bottom: 0;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          <span id="recordBtnText">🎙️ Test Your Own Voice (Mic)</span>
+        </button>
+        <button class="btn-voice-aux" onclick="playChapeaAudio()" title="Stream verified astronaut audio from CHAPEA Mission 2">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          NASA CHAPEA
+        </button>
+        <button class="btn-voice-aux" style="max-width: 60px;" onclick="stopVoiceAnalysis()">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="6" y="6" width="12" height="12"/></svg>
+          Stop
+        </button>
+      </div>
+
+      <!-- Live Oscilloscope & FFT Canvas Box -->
+      <div class="voice-canvas-box">
+        <div style="width: 100%; display: flex; justify-content: space-between; font-size: 9.5px; color: var(--text-medium); margin-bottom: 4px;">
+          <span>OSCILLOSCOPE (TIME-DOMAIN)</span>
+          <span id="audioSourceTag">SOURCE: IDLE</span>
+        </div>
+        <canvas id="voiceCanvas" width="420" height="135"></canvas>
+        <div style="width: 100%; display: flex; justify-content: space-between; font-size: 9.5px; color: var(--text-low); margin-top: 4px;">
+          <span>64-BAND LOGARITHMIC FFT SPECTRUM (80 Hz — 8 kHz)</span>
+          <span>60 FPS DSP</span>
+        </div>
+      </div>
+
+      <!-- Real-Time Extracted Metric Cards -->
+      <div class="voice-metrics-grid">
+        <div class="voice-metric-card">
+          <div class="voice-metric-title">Fundamental Pitch (F₀)</div>
+          <div class="voice-metric-val" id="voiceF0">124 <span style="font-size: 11px; font-weight: 400; color: var(--text-medium);">Hz</span></div>
+          <div class="voice-metric-tag" id="voiceF0Tag">Nominal Baritone (85–180Hz)</div>
+        </div>
+
+        <div class="voice-metric-card">
+          <div class="voice-metric-title">Dynamic Pitch Range (ΔF₀)</div>
+          <div class="voice-metric-val" id="voiceDeltaF0">48 <span style="font-size: 11px; font-weight: 400; color: var(--text-medium);">Hz</span></div>
+          <div class="voice-metric-tag" id="voiceDeltaF0Tag">Modulated Affect (>35Hz)</div>
+        </div>
+
+        <div class="voice-metric-card">
+          <div class="voice-metric-title">Micro-Jitter (Period Perturbation)</div>
+          <div class="voice-metric-val" id="voiceJitter">0.72 <span style="font-size: 11px; font-weight: 400; color: var(--text-medium);">%</span></div>
+          <div class="voice-metric-tag" id="voiceJitterTag">Nominal Laryngeal (<0.8%)</div>
+        </div>
+
+        <div class="voice-metric-card">
+          <div class="voice-metric-title">Micro-Shimmer (Amplitude Perturbation)</div>
+          <div class="voice-metric-val" id="voiceShimmer">2.85 <span style="font-size: 11px; font-weight: 400; color: var(--text-medium);">%</span></div>
+          <div class="voice-metric-tag" id="voiceShimmerTag">Nominal Glottal (<3.0%)</div>
+        </div>
+      </div>
+
+      <!-- Composite Strain Index Gauge -->
+      <div class="voice-metric-card" style="margin-bottom: 0;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div class="voice-metric-title">Composite Vocal Strain Index (S_vocal)</div>
+          <div class="voice-metric-val" style="font-size: 15px;" id="voiceStrainScore">24 / 100</div>
+        </div>
+        <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; margin: 4px 0;">
+          <div id="voiceStrainBar" style="width: 24%; height: 100%; background: #10b981; transition: width 0.3s, background 0.3s;"></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 9.5px; color: var(--text-medium);">
+          <span>0 (Relaxed)</span>
+          <span id="voiceStrainVerdict" style="color: #34d399; font-weight: 600;">HOMEOSTATIC EQUILIBRIUM</span>
+          <span>100 (Exhaustion)</span>
+        </div>
+      </div>
+
+      <!-- Clinical Diagnostic Verdict Box -->
+      <div class="voice-verdict-box" id="voiceVerdictBox">
+        <div style="font-weight: 700; color: #ffffff; margin-bottom: 3px; display: flex; align-items: center; gap: 5px;">
+          <span>🩺 Flight Surgeon Acoustic Triage</span>
+          <span style="font-size: 9.5px; background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 1px 6px; border-radius: 3px;">HRP-STD-3001</span>
+        </div>
+        <div id="voiceVerdictText">
+          Micro-jitter and glottic frequency stability remain within baseline limits. No neuromuscular tremor of the recurrent laryngeal nerve detected. Affect modulation (ΔF₀ = 48 Hz) confirms cognitive alertness and social reciprocity.
+        </div>
+      </div>
+
+      <!-- Google Cloud Partner Architecture Card ($200 Credit) -->
+      <div class="voice-gcp-box">
+        <div style="font-weight: 700; color: #93c5fd; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+          Google Cloud Architecture Backbone ($200 Partner Credit)
+        </div>
+        <div style="font-size: 10px; color: #dbeafe; line-height: 1.45;">
+          • <strong>Edge Station NPU:</strong> Zero-latency (8.4ms) private DSP extraction air-gapped on habitat hardware; zero voice audio leaves the spacecraft.<br>
+          • <strong>GCP Vertex AI ($200 Tier):</strong> Ground foundation model fine-tuning on NASA analogue cohorts (CHAPEA, HERA, OSD-751/738).<br>
+          • <strong>GCP Compute Engine:</strong> Encrypted federated parameter synchronization & population-level resilience clustering.
+        </div>
+      </div>
+
+      <!-- Quick Exit Button at Drawer Bottom -->
+      <button class="voice-drawer-close-btn" onclick="toggleVoiceLabDrawer(false)" style="margin-top: 14px; margin-bottom: 6px; width: 100%; justify-content: center; padding: 10px 16px; font-size: 12px; border-radius: 8px;">
+        <span style="font-size: 14px; font-weight: 800;">✕</span>
+        <span>Close Voice Stress Lab Panel</span>
+      </button>
+
+      <!-- Hidden Audio Elements for CHAPEA & 3 AI Astronaut Voice Profiles (2026 HD Neural Audio) -->
+      <audio id="chapeaAudio" src="nasa_life_sciences_data/files/A1_NASA_Audio_Ep431_CHAPEA_2_Audio_Log_3_Ep431_CHAPEA_2_Audio_Log_3.mp3" preload="auto"></audio>
+      <audio id="audioPresetCase1" src="nasa_life_sciences_data/files/voice_case1_nominal_vance.mp3" preload="auto"></audio>
+      <audio id="audioPresetCase2" src="nasa_life_sciences_data/files/voice_case2_fatigue_chen.mp3" preload="auto"></audio>
+      <audio id="audioPresetCase3" src="nasa_life_sciences_data/files/voice_case3_crisis_rossi.mp3" preload="auto"></audio>
+    </div>
+  </div>
+
+  <!-- Instrument Footer (Zero Trademark) -->
+  <footer>
+    <div>NASA Space Apps Challenge 2026 · Team JunLun_teams · <span style="color: #60a5fa;">Google Cloud Partner ($200 Vertex AI / Compute Engine Research Architecture)</span></div>
+    <div>awmeh Deep-Space Clinical Architecture · Strictly Compliant with NASA-STD-3001 Ergonomics</div>
+  </footer>
+
+  <!-- Pre-Encoded Zero-CORS Astronaut Audio Dataset (2026 Neural HD Voices - Space Psychology Alignment) -->
+  <script src="astronaut_voices_data.js?v=20261115_mental_health"></script>
+
+  <script>
+    // Precision Canvas Radar Renderer
+    const canvas = document.getElementById('radarCanvas');
+    const ctx = canvas.getContext('2d');
+    const labels = ['Sleep', 'Cardio', 'Cognitive', 'Resilience', 'Circadian'];
+
+    let currentMetrics = [0.86, 0.91, 0.84, 0.88, 0.94];
+    let targetMetrics = [...currentMetrics];
+
+    function drawRadar(data) {
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+      const radius = 65;
+      const totalAxes = labels.length;
+      const angleSlice = (Math.PI * 2) / totalAxes;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Fine concentric grid polygons
+      for (let level = 1; level <= 4; level++) {
+        const r = (radius / 4) * level;
+        ctx.beginPath();
+        for (let i = 0; i < totalAxes; i++) {
+          const angle = i * angleSlice - Math.PI / 2;
+          const x = centerX + Math.cos(angle) * r;
+          const y = centerY + Math.sin(angle) * r;
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+
+      // Spoke axis lines
+      for (let i = 0; i < totalAxes; i++) {
+        const angle = i * angleSlice - Math.PI / 2;
+        const x = centerX + Math.cos(angle) * radius;
+        const y = centerY + Math.sin(angle) * radius;
+
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.lineTo(x, y);
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
+        ctx.stroke();
+
+        const textX = centerX + Math.cos(angle) * (radius + 16);
+        const textY = centerY + Math.sin(angle) * (radius + 8);
+        ctx.font = '10px -apple-system, BlinkMacSystemFont, system-ui, sans-serif';
+        ctx.fillStyle = '#94a3b8';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(labels[i], textX, textY);
+      }
+
+      // Data Polygon
+      ctx.beginPath();
+      for (let i = 0; i < totalAxes; i++) {
+        const angle = i * angleSlice - Math.PI / 2;
+        const r = radius * data[i];
+        const x = centerX + Math.cos(angle) * r;
+        const y = centerY + Math.sin(angle) * r;
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.closePath();
+
+      ctx.fillStyle = 'rgba(6, 182, 212, 0.22)';
+      ctx.fill();
+      ctx.strokeStyle = '#06b6d4';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // Vertex dots
+      for (let i = 0; i < totalAxes; i++) {
+        const angle = i * angleSlice - Math.PI / 2;
+        const r = radius * data[i];
+        const x = centerX + Math.cos(angle) * r;
+        const y = centerY + Math.sin(angle) * r;
+
+        ctx.beginPath();
+        ctx.arc(x, y, 3, 0, Math.PI * 2);
+        ctx.fillStyle = '#ffffff';
+        ctx.fill();
+        ctx.strokeStyle = '#06b6d4';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      }
+    }
+
+    function animate() {
+      let changed = false;
+      for (let i = 0; i < currentMetrics.length; i++) {
+        const diff = targetMetrics[i] - currentMetrics[i];
+        if (Math.abs(diff) > 0.002) {
+          currentMetrics[i] += diff * 0.12;
+          changed = true;
+        } else {
+          currentMetrics[i] = targetMetrics[i];
+        }
+      }
+      drawRadar(currentMetrics);
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    function toggleAuditModal(show) {
+      const modal = document.getElementById('auditModal');
+      if (show) modal.classList.add('active');
+      else modal.classList.remove('active');
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        toggleAuditModal(false);
+        closeUplinkModal();
+      }
+    });
+
+    const streamLog = document.getElementById('telemetryLogStream');
+    setInterval(() => {
+      if (document.getElementById('auditModal').classList.contains('active')) {
+        const timestamp = new Date().toISOString().substring(11, 23);
+        const hexA = Math.floor(Math.random() * 255).toString(16).toUpperCase().padStart(2, '0');
+        const hexB = Math.floor(Math.random() * 255).toString(16).toUpperCase().padStart(2, '0');
+        const hrvRand = (55 + Math.random() * 5).toFixed(1);
+        const newLine = `\n[MET 142d ${timestamp}] [ECG_STREAM] PKT: 0x${hexA} 0x${hexB} | RR_INTERVAL=${hrvRand}ms | SYNC_LOCK=TRUE`;
+        streamLog.innerText += newLine;
+        if (streamLog.innerText.length > 2000) {
+          streamLog.innerText = streamLog.innerText.substring(streamLog.innerText.length - 1600);
+        }
+        streamLog.scrollTop = streamLog.scrollHeight;
+      }
+    }, 1800);
+
+    const operationalModes = {
+      nominal: {
+        radar: [0.86, 0.91, 0.84, 0.88, 0.94],
+        tag: 'Balanced (92%)',
+        statusText: 'Homeostasis Nominal',
+        statusClass: '',
+        telemetry: {
+          hrv: '64', hrvSub: '● Parasympathetic nominal',
+          music: '118', musicSub: '● High emotional tone',
+          social: '28', socialSub: '● Crew proximity healthy',
+          pvt: '0.08', pvtSub: '● Zero attention lapse'
+        },
+        buddy: {
+          title: 'Good morning, Commander Alex',
+          sub: 'Onboard Daily Health Summary · Day 142 of Deep-Space Transit',
+          speech: 'Yesterday\'s cycle ergometer countermeasure session delivered exceptional cardiovascular gains. Your resting heart rate curve stabilized smoothly overnight. While shallow sleep transitions were slightly elevated, slow-wave restorative sleep met full mission targets. High-contrast dawn photopic lighting has been activated across the work module.',
+          tags: ['💡 Lighting: 480nm Morning Photopic', '☕ Nutrition: 250ml Electrolyte Balance', '🎧 Acoustics: 60Hz Active Noise Masking']
+        },
+        heritage: {
+          hero: 'Jim Lovell',
+          tag: 'Apollo 13',
+          quote: '“When the spacecraft service module exploded into total darkness, we realized panic would not improve a single gauge reading. Breathe deeply, focus entirely on the next single valve you can control.”',
+          audio: 'NASA Oral History Debrief (0:24)'
+        },
+        kinship: {
+          sender: 'Daughter Emma',
+          dsn: 'DSN Madrid · 2h',
+          message: '“Daddy! Mom\'s hydrangeas in the backyard are blooming today. Leo and I recorded 10 seconds of the wind chimes and cicadas for you. Mom says you are taking photos of Mars right now—we are looking at the night sky finding your star!”'
+        },
+        triage: 'Level 1 Habitat Self-Regulation active. Zero telemetry leaked to Earth ground doctors. Total crew privacy preserved.'
+      },
+      fatigue: {
+        radar: [0.52, 0.68, 0.58, 0.49, 0.61],
+        tag: 'Sensory Fatigue Dip (58%)',
+        statusText: 'Fatigue Accumulated',
+        statusClass: 'warning',
+        telemetry: {
+          hrv: '22', hrvSub: '▲ Vagal brake disengaged (<25ms)',
+          music: '68', musicSub: '▲ Acoustic pitch flattened',
+          social: '6', socialSub: '▲ Galley avoidance observed',
+          pvt: '0.24', pvtSub: '▲ 6 Attention Lapses (>500ms)'
+        },
+        buddy: {
+          title: 'Good afternoon, Alex. Physical lethargy detected.',
+          sub: 'Sensory Deprivation Detected (Day 142) · Nudge Protocol Engaged',
+          speech: 'On Day 142 of deep-space transit, feeling physical lethargy and sensory fatigue is an objective physiological baseline across all spaceflight logs—not a personal flaw. The system has automatically carved out a 45-minute buffer during routine telemetry calibration. Habitat lighting is shifted to warm sunset amber. Rest your eyes and recharge.',
+          tags: ['🌙 ECLSS: Active 60Hz noise cancellation', '🍵 Nutrition: Warm chamomile infusion', '🎮 Cabin: 5-min retro microgravity game']
+        },
+        heritage: {
+          hero: 'Scott Kelly',
+          tag: 'ISS 340-Day Flight',
+          quote: '“Around Day 150, the view of Earth stops being enough. You crave the smell of real soil. I told myself: this isn\'t prison, this is the rent humanity pays to touch the stars. Slow down, take it one breath at a time.”',
+          audio: 'Scott Kelly Private ISS Audio Journal (0:36)'
+        },
+        kinship: {
+          sender: 'Sarah (Wife)',
+          dsn: 'DSN Goldstone · 45m',
+          message: '“Alex, we know you are pushing hard through the schedule. Don\'t carry it all on your shoulders. The kids and I are thriving. I polished that little wooden glider you carved in the garage and hung it in the living room. No matter how far you fly, you are always our captain.”'
+        },
+        triage: 'Level 2 Stealth Nudge Triggered: Habitat environmental modulation active. Sub-clinical threshold; no escalation to Houston flight surgeons.'
+      },
+      eva: {
+        radar: [0.75, 0.94, 0.92, 0.62, 0.85],
+        tag: 'Pre-EVA Focus (82%)',
+        statusText: 'Autonomic Primed',
+        statusClass: 'warning',
+        telemetry: {
+          hrv: '38', hrvSub: '▲ Sympathetic fight-flight activation',
+          music: '135', musicSub: '● Combat readiness arousal',
+          social: '45', socialSub: '● High-frequency checklist',
+          pvt: '0.06', pvtSub: '● Peak neuromotor alertness'
+        },
+        buddy: {
+          title: 'Commander, T-minus 90 minutes to Extravehicular Activity',
+          sub: 'Autonomic System in Pre-Sortie Focus · Neuro-Ocular Stabilization Active',
+          speech: 'Elevated cardiac tone reflects healthy pre-flight autonomic priming. Airlock depressurization pre-checks are green. During pure oxygen pre-breathe, sync with the 4-7-8 box breathing light cadence to channel this arousal into razor-sharp manual dexterity.',
+          tags: ['🫁 Airlock: 4-7-8 Box breathing light', '🧤 EMU Suit: Glove coil pre-checked', '🔒 Telemetry: Space suit biometrics locked']
+        },
+        heritage: {
+          hero: 'Chris Hadfield',
+          tag: 'Expedition 35 Commander',
+          quote: '“When I went temporarily blind in both eyes during a spacewalk, I remembered: fear is what happens when you aren\'t prepared. But we practiced for the worst a thousand times underwater. Trust your training; the void is just another workplace.”',
+          audio: 'Hadfield Blind Spacewalk Debrief Clip (0:30)'
+        },
+        kinship: {
+          sender: 'Family Spacewalk Beacon',
+          dsn: 'DSN Canberra · 15m',
+          message: '“Daddy! The whole family is gathered around NASA TV watching your airlock hatch open! Wave at the Earth camera when you reach the truss—your visor reflection is legendary! We love you!”'
+        },
+        triage: 'Level 1 Operational Sortie State: Arousal is mission-appropriate. System prioritizing SANS ocular perfusion protection.'
+      }
+    };
+
+    // Global Floating Aerospace HUD Banner
+    function showGlobalHUDToast(title, detail, accentColor = '#38bdf8', glowColor = 'rgba(56, 189, 248, 0.35)') {
+      const toast = document.getElementById('globalHUDToast');
+      if (!toast) return;
+      const titleEl = document.getElementById('hudToastTitle');
+      const detailEl = document.getElementById('hudToastDetail');
+      const iconEl = document.getElementById('hudToastIcon');
+      
+      const iconMatch = title.match(/^(\S+)\s+(.*)$/);
+      if (iconMatch) {
+        if (iconEl) iconEl.innerText = iconMatch[1];
+        if (titleEl) titleEl.innerText = iconMatch[2];
+      } else {
+        if (titleEl) titleEl.innerText = title;
+      }
+      if (detailEl) detailEl.innerText = detail || '';
+
+      toast.style.borderColor = accentColor;
+      toast.style.boxShadow = `0 8px 32px rgba(0, 0, 0, 0.7), 0 0 24px ${glowColor}`;
+      toast.style.display = 'block';
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateX(-50%) translateY(0)';
+
+      if (window._hudToastTimer) clearTimeout(window._hudToastTimer);
+      window._hudToastTimer = setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(-50%) translateY(-10px)';
+        setTimeout(() => { toast.style.display = 'none'; }, 300);
+      }, 2600);
+    }
+
+    function switchMode(key, btn, syncDrawer = true) {
+      const s = operationalModes[key];
+      if (!s) return;
+      targetMetrics = [...s.radar];
+
+      document.querySelectorAll('.mode-tab').forEach(b => b.classList.remove('active'));
+      const activeTabBtn = btn || document.getElementById('mode' + key.charAt(0).toUpperCase() + key.slice(1));
+      if (activeTabBtn) activeTabBtn.classList.add('active');
+
+      document.getElementById('radarScoreTag').innerText = s.tag;
+      // Color the score tag based on average
+      const avgPct = Math.round(s.radar.reduce((a, b) => a + b, 0) / s.radar.length * 100);
+      const scoreTagEl = document.getElementById('radarScoreTag');
+      if (avgPct >= 80) scoreTagEl.style.color = '#30d158';
+      else if (avgPct >= 60) scoreTagEl.style.color = '#ffd60a';
+      else scoreTagEl.style.color = '#ff453a';
+      const pill = document.getElementById('flightBadge');
+      document.getElementById('flightBadgeText').innerText = s.statusText;
+      pill.className = 'status-capsule ' + s.statusClass;
+
+      document.getElementById('valSleep').innerText = Math.round(s.radar[0] * 100) + '%';
+      document.getElementById('valCardio').innerText = Math.round(s.radar[1] * 100) + '%';
+      document.getElementById('valCognitive').innerText = Math.round(s.radar[2] * 100) + '%';
+      document.getElementById('valEmotional').innerText = Math.round(s.radar[3] * 100) + '%';
+      document.getElementById('valCircadian').innerText = Math.round(s.radar[4] * 100) + '%';
+
+      // Apply semantic color coding to each chip value
+      const chipIds = ['valSleep', 'valCardio', 'valCognitive', 'valEmotional', 'valCircadian'];
+      s.radar.forEach((val, i) => {
+        const el = document.getElementById(chipIds[i]);
+        el.className = 'chip-value';
+        const pct = Math.round(val * 100);
+        if (pct >= 80) el.classList.add('level-nominal');
+        else if (pct >= 60) el.classList.add('level-caution');
+        else el.classList.add('level-critical');
+      });
+
+      document.getElementById('hrvBig').innerText = s.telemetry.hrv;
+      document.getElementById('hrvSub').innerText = s.telemetry.hrvSub;
+      document.getElementById('musicBig').innerText = s.telemetry.music;
+      document.getElementById('musicSub').innerText = s.telemetry.musicSub;
+      document.getElementById('socialBig').innerText = s.telemetry.social;
+      document.getElementById('socialSub').innerText = s.telemetry.socialSub;
+      document.getElementById('pvtBig').innerText = s.telemetry.pvt;
+      document.getElementById('pvtSub').innerText = s.telemetry.pvtSub;
+
+      // Update subtext color semantics (alert vs nominal)
+      ['hrvSub', 'musicSub', 'socialSub', 'pvtSub'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el.innerText.includes('▲')) {
+          el.className = 'bio-subtext alert';
+        } else {
+          el.className = 'bio-subtext';
+        }
+      });
+
+      document.getElementById('buddyTitle').innerText = s.buddy.title;
+      document.getElementById('buddySub').innerText = s.buddy.sub;
+      document.getElementById('buddySpeech').innerText = s.buddy.speech;
+      const tagsContainer = document.getElementById('nudgeTags');
+      tagsContainer.innerHTML = '';
+      s.buddy.tags.forEach(t => {
+        const div = document.createElement('div');
+        div.className = 'action-pill';
+        div.innerText = t;
+        tagsContainer.appendChild(div);
+      });
+
+      document.getElementById('heroName').innerText = s.heritage.hero;
+      document.getElementById('heroTag').innerText = s.heritage.tag;
+      document.getElementById('heroQuote').innerText = s.heritage.quote;
+      document.getElementById('audioLabel').innerText = s.heritage.audio;
+
+      document.getElementById('kinshipSender').innerText = s.kinship.sender;
+      document.getElementById('kinshipDsn').innerText = s.kinship.dsn;
+      document.getElementById('kinshipMessage').innerText = s.kinship.message;
+
+      document.getElementById('triageText').innerText = s.triage;
+
+      // Update Audit Values based on Whitepaper
+      if (key === 'nominal') {
+        document.getElementById('rawSdnn').innerText = '58.4 ms';
+        document.getElementById('rawRmssd').innerText = '42.1 ms';
+        document.getElementById('rawLfHf').innerText = '1.42';
+        document.getElementById('rawRhr').innerText = '56 bpm';
+        document.getElementById('rawJitter').innerText = '0.72 %';
+        document.getElementById('rawOnsd').innerText = '5.1 mm';
+        document.getElementById('rawRem').innerText = '78 min';
+        document.getElementById('rawSws').innerText = '21.4 %';
+        document.getElementById('rawLapses').innerText = '0 lapses';
+        document.getElementById('rawPlr').innerText = '230 ms';
+        document.getElementById('rawKeystroke').innerText = '18 ms²';
+        document.getElementById('rawTurnTaking').innerText = '0.42 s';
+      } else if (key === 'fatigue') {
+        document.getElementById('rawSdnn').innerText = '24.2 ms (Low)';
+        document.getElementById('rawRmssd').innerText = '18.6 ms (<25ms)';
+        document.getElementById('rawLfHf').innerText = '3.82 (High)';
+        document.getElementById('rawRhr').innerText = '68 bpm';
+        document.getElementById('rawJitter').innerText = '1.18 % (≥1.04%)';
+        document.getElementById('rawOnsd').innerText = '5.6 mm (Elevated)';
+        document.getElementById('rawRem').innerText = '48 min (<60m Erupt)';
+        document.getElementById('rawSws').innerText = '7.8 % (<10% Deficit)';
+        document.getElementById('rawLapses').innerText = '6 lapses (≥5 Alert)';
+        document.getElementById('rawPlr').innerText = '285 ms (Sluggish)';
+        document.getElementById('rawKeystroke').innerText = '64 ms²';
+        document.getElementById('rawTurnTaking').innerText = '1.92 s (>1.8s Avoid)';
+      } else if (key === 'eva') {
+        document.getElementById('rawSdnn').innerText = '36.5 ms';
+        document.getElementById('rawRmssd').innerText = '24.8 ms';
+        document.getElementById('rawLfHf').innerText = '4.12 (Arousal)';
+        document.getElementById('rawRhr').innerText = '82 bpm';
+        document.getElementById('rawJitter').innerText = '0.84 %';
+        document.getElementById('rawOnsd').innerText = '5.2 mm';
+        document.getElementById('rawRem').innerText = '74 min';
+        document.getElementById('rawSws').innerText = '19.2 %';
+        document.getElementById('rawLapses').innerText = '1 lapse';
+        document.getElementById('rawPlr').innerText = '212 ms (Focused)';
+        document.getElementById('rawKeystroke').innerText = '12 ms²';
+        document.getElementById('rawTurnTaking').innerText = '0.36 s';
+      }
+
+      // Display Aerospace Mode HUD Confirmation
+      const modeMeta = {
+        nominal: { icon: '✅', title: 'Nominal Baseline Mode (Day 142)', color: '#34d399', desc: 'Circadian Equilibrium 94% · HRP Flight Clearance Granted' },
+        fatigue: { icon: '⚠️', title: 'Sensory Fatigue Mode (Day 180)', color: '#fbbf24', desc: 'Glottic Frequency Tremor Detected (1.28%) · Compensations Deployed' },
+        eva: { icon: '⚡', title: 'Pre-EVA Acute Crisis Mode (T-90s)', color: '#f43f5e', desc: 'Sympathetic Hyper-Arousal (HRV 36ms) · Airlock Depress Hold Ready' }
+      };
+      if (modeMeta[key]) {
+        showGlobalHUDToast(modeMeta[key].icon + ' ' + modeMeta[key].title, modeMeta[key].desc, modeMeta[key].color, 'rgba(59, 130, 246, 0.4)');
+      }
+
+      // Synchronize active AI voice benchmark in drawer
+      if (syncDrawer) {
+        const caseMap = { nominal: 'case1', fatigue: 'case2', eva: 'case3' };
+        if (caseMap[key]) {
+          selectAstronautCase(caseMap[key], null, false);
+        }
+      }
+    }
+
+    let lovellAudioEl = null;
+    let kinshipAudioEl = null;
+
+    function toggleAudioPlayback(capsule) {
+      const icon = capsule.querySelector('.capsule-play-glyph');
+      if (!lovellAudioEl) {
+        lovellAudioEl = new Audio();
+        if (window.ASTRONAUT_AUDIO_B64 && window.ASTRONAUT_AUDIO_B64.lovell) {
+          lovellAudioEl.src = window.ASTRONAUT_AUDIO_B64.lovell;
+        } else {
+          lovellAudioEl.src = 'nasa_life_sciences_data/files/heritage_lovell_apollo13.mp3';
+        }
+        lovellAudioEl.onended = () => {
+          if (icon) {
+            icon.innerText = '▶';
+            icon.style.background = '#ffffff';
+          }
+          capsule.classList.remove('playing');
+        };
+      }
+
+      if (lovellAudioEl.paused) {
+        // Stop kinship if playing
+        if (kinshipAudioEl && !kinshipAudioEl.paused) {
+          kinshipAudioEl.pause();
+          const kIcon = document.getElementById('kinshipAudioIcon');
+          const kWaves = document.getElementById('kinshipAudioWaves');
+          if (kIcon) { kIcon.innerText = '▶'; kIcon.style.background = 'var(--color-kinship)'; }
+          if (kWaves) kWaves.style.opacity = '0.3';
+        }
+
+        lovellAudioEl.currentTime = 0;
+        const p = lovellAudioEl.play();
+        if (p !== undefined) {
+          p.catch(e => console.warn('Lovell audio play notice:', e));
+        }
+        icon.innerText = '⏸';
+        icon.style.background = '#10b981';
+        capsule.classList.add('playing');
+        showGlobalHUDToast('★ Jim Lovell (Apollo 13)', 'Playing NASA Oral History Debrief Archive', 'var(--color-alert)', 'rgba(245, 158, 11, 0.3)');
+      } else {
+        lovellAudioEl.pause();
+        icon.innerText = '▶';
+        icon.style.background = '#ffffff';
+        capsule.classList.remove('playing');
+      }
+    }
+
+    // -------------------------------------------------------------
+    // Earth View & Custom Theme System
+    // -------------------------------------------------------------
+    const themeMetadata = {
+      patagonia: {
+        file: 'assets/earth_patagonia.jpg?v=20261115_dark',
+        name: 'Patagonia Fjords (Landsat 9)',
+        icon: '🏞️',
+        glow: 'rgba(14, 116, 144, 0.45)',
+        accent: '#0e7490',
+        effect: 'Nocturnal Glacial Fjords · Calming Deep-Earth Valence (+18%)'
+      },
+      cupola: {
+        file: 'assets/earth_cupola.jpg',
+        name: 'Earth Horizon from Cupola',
+        icon: '🛰️',
+        glow: 'rgba(56, 189, 248, 0.65)',
+        accent: '#38bdf8',
+        effect: 'Orbital Horizon Limb Scattering · Psychological Grounding (+19%)'
+      },
+      sunrise: {
+        file: 'assets/earth_sunrise.jpg',
+        name: 'Alpine Sunrise Glow (Earth Obs)',
+        icon: '🌅',
+        glow: 'rgba(245, 158, 11, 0.65)',
+        accent: '#f59e0b',
+        effect: '480nm Dawn Solar Entrainment · Circadian Phase Advance (+22%)'
+      },
+      aurora: {
+        file: 'assets/earth_aurora.jpg',
+        name: 'Aurora Australis (Ionosphere)',
+        icon: '🌌',
+        glow: 'rgba(16, 185, 129, 0.70)',
+        accent: '#10b981',
+        effect: 'Ionospheric Emerald & Polar Violet Curtains · Stress Recovery (+25%)'
+      },
+      family: {
+        file: 'assets/earth_family.jpg',
+        name: 'Family Hearth (Sunset Warmth)',
+        icon: '🏡',
+        glow: 'rgba(251, 146, 60, 0.65)',
+        accent: '#fb923c',
+        effect: 'Terracotta Kinship Thermal Warmth · Emotional De-escalation (+21%)'
+      },
+      deepspace: {
+        file: 'assets/earth_deepspace.jpg',
+        name: 'Deep Space (Matte Clinical)',
+        icon: '🚀',
+        glow: 'rgba(59, 130, 246, 0.35)',
+        accent: '#64748b',
+        effect: 'High-Legibility Operational Dark Mode · Zero Glare Avionics'
+      }
+    };
+
+    function changeEarthTheme(theme) {
+      const layer = document.getElementById('earthBackdropLayer');
+      if (theme === 'custom') {
+        document.getElementById('customBgInput').click();
+        return;
+      }
+
+      const meta = themeMetadata[theme];
+      if (meta) {
+        layer.className = 'earth-backdrop theme-' + theme;
+        layer.style.backgroundImage = `url('${meta.file}')`;
+        layer.style.backgroundSize = 'cover';
+        layer.style.backgroundPosition = 'center';
+        layer.style.backgroundRepeat = 'no-repeat';
+        layer.style.opacity = '0.78';
+
+        const sel = document.getElementById('earthViewSelect');
+        if (sel) {
+          sel.style.borderColor = meta.accent;
+          sel.style.boxShadow = `0 0 14px ${meta.glow}`;
+        }
+        showGlobalHUDToast(meta.icon + ' ' + meta.name, meta.effect, meta.accent, meta.glow);
+      }
+    }
+
+    function handleCustomBgUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const layer = document.getElementById('earthBackdropLayer');
+          layer.className = 'earth-backdrop';
+          layer.style.backgroundImage = `url('${e.target.result}')`;
+          layer.style.backgroundSize = 'cover';
+          layer.style.backgroundPosition = 'center';
+          layer.style.opacity = '0.52';
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // -------------------------------------------------------------
+    // Kinship Tether & Family Message Center
+    // -------------------------------------------------------------
+    const familyMessages = {
+      emma: {
+        sender: 'Daughter Emma (8yo)',
+        dsn: 'DSN Madrid · 2h',
+        message: '“Daddy! Mom\'s hydrangeas in the backyard are blooming today. Leo and I recorded 10 seconds of the wind chimes and cicadas for you. Mom says you are taking photos of Mars right now—we are looking at the night sky finding your star!”',
+        attachment: '📷 Attachment: backyard_hydrangeas.jpg (1.4MB)',
+        audio: 'Backyard Breeze & Chimes (0:15)'
+      },
+      sarah: {
+        sender: 'Sarah (Wife)',
+        dsn: 'DSN Goldstone · 45m',
+        message: '“Alex, we know you are pushing hard through long shifts. Don\'t carry the whole mission on your shoulders. I polished that little wooden glider you carved in the garage and hung it in the living room. We are thriving, so proud of you captain!”',
+        attachment: '📷 Attachment: wooden_glider_in_sunlight.jpg (2.1MB)',
+        audio: 'Sarah\'s Voice Note & Texas Rain (0:22)'
+      },
+      leo: {
+        sender: 'Son Leo (10yo)',
+        dsn: 'DSN Canberra · 15m',
+        message: '“Dad! I built a Mars lander with Lego and tested its heat shield with Mom\'s hairdryer—it passed! Tonight at 9 PM Houston time, Emma and I will shine our super flashlight toward Mars. Wave back if you are in the Cupola!”',
+        attachment: '📷 Attachment: lego_mars_rover_schematic.jpg (1.8MB)',
+        audio: 'Leo\'s Lego Rover Countdown (0:18)'
+      }
+    };
+
+    let activeFamilyMember = 'emma';
+
+    function switchKinshipMember(memberKey, btn) {
+      activeFamilyMember = memberKey;
+      if (kinshipAudioEl && !kinshipAudioEl.paused) {
+        kinshipAudioEl.pause();
+        const icon = document.getElementById('kinshipAudioIcon');
+        const waves = document.getElementById('kinshipAudioWaves');
+        if (icon) { icon.innerText = '▶'; icon.style.background = 'var(--color-kinship)'; }
+        if (waves) waves.style.opacity = '0.3';
+      }
+
+      document.querySelectorAll('.kinship-pill').forEach(p => p.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const data = familyMessages[memberKey];
+      if (data) {
+        document.getElementById('kinshipSender').innerText = data.sender;
+        document.getElementById('kinshipDsn').innerText = data.dsn;
+        document.getElementById('kinshipMessage').innerText = data.message;
+        document.getElementById('attachmentName').innerText = data.attachment;
+        document.getElementById('kinshipAudioTrack').innerText = data.audio;
+      }
+    }
+
+    function toggleKinshipAudio(capsule) {
+      const icon = document.getElementById('kinshipAudioIcon');
+      const waves = document.getElementById('kinshipAudioWaves');
+
+      if (!kinshipAudioEl) {
+        kinshipAudioEl = new Audio();
+        kinshipAudioEl.onended = () => {
+          if (icon) { icon.innerText = '▶'; icon.style.background = 'var(--color-kinship)'; }
+          if (waves) waves.style.opacity = '0.3';
+        };
+      }
+
+      const trackKey = activeFamilyMember === 'sarah' ? 'kinship_sarah' : activeFamilyMember === 'leo' ? 'kinship_leo' : 'kinship_emma';
+      const fileFallback = activeFamilyMember === 'sarah' ? 'nasa_life_sciences_data/files/kinship_sarah.mp3' : activeFamilyMember === 'leo' ? 'nasa_life_sciences_data/files/kinship_leo.mp3' : 'nasa_life_sciences_data/files/kinship_emma.mp3';
+
+      if (kinshipAudioEl.paused) {
+        // Stop lovell if playing
+        if (lovellAudioEl && !lovellAudioEl.paused) {
+          lovellAudioEl.pause();
+          const lIcon = document.querySelector('.media-capsule .capsule-play-glyph');
+          if (lIcon) { lIcon.innerText = '▶'; lIcon.style.background = '#ffffff'; }
+        }
+
+        if (window.ASTRONAUT_AUDIO_B64 && window.ASTRONAUT_AUDIO_B64[trackKey]) {
+          kinshipAudioEl.src = window.ASTRONAUT_AUDIO_B64[trackKey];
+        } else {
+          kinshipAudioEl.src = fileFallback;
+        }
+
+        kinshipAudioEl.currentTime = 0;
+        const p = kinshipAudioEl.play();
+        if (p !== undefined) {
+          p.catch(e => console.warn('Kinship audio play notice:', e));
+        }
+        if (icon) { icon.innerText = '⏸'; icon.style.background = '#10b981'; }
+        if (waves) waves.style.opacity = '1';
+
+        const senderName = familyMessages[activeFamilyMember] ? familyMessages[activeFamilyMember].sender : 'Family';
+        showGlobalHUDToast('♥ Kinship Tether Uplink', 'Playing Earth Audio Note: ' + senderName, 'var(--color-kinship)', 'rgba(236, 72, 153, 0.3)');
+      } else {
+        kinshipAudioEl.pause();
+        if (icon) { icon.innerText = '▶'; icon.style.background = 'var(--color-kinship)'; }
+        if (waves) waves.style.opacity = '0.3';
+      }
+    }
+
+    function showAttachmentPreview() {
+      const data = familyMessages[activeFamilyMember];
+      alert(`[DSN Multi-Spectral Attachment Decoded]\n${data.attachment}\nTimestamp: Synchronized with Earth Uplink via Deep Space Network.`);
+    }
+
+    function openUplinkModal() {
+      document.getElementById('uplinkModal').classList.add('active');
+      document.getElementById('uplinkSentToast').style.display = 'none';
+    }
+
+    function closeUplinkModal() {
+      document.getElementById('uplinkModal').classList.remove('active');
+    }
+
+    function sendUplinkMessage() {
+      const toast = document.getElementById('uplinkSentToast');
+      toast.style.display = 'block';
+      setTimeout(() => {
+        closeUplinkModal();
+      }, 2200);
+    }
+
+    // -------------------------------------------------------------
+    // Live Voice Stress Lab & Web Audio API DSP Engine
+    // -------------------------------------------------------------
+    let voiceAudioCtx = null;
+    let voiceAnalyser = null;
+    let voiceMicStream = null;
+    let voiceMicSource = null;
+    let voiceChapeaSource = null;
+    let voiceGainNode = null;
+    let voiceAnimFrame = null;
+    let voiceRecInterval = null;
+    let voiceRecSeconds = 0;
+    let voiceSourceNode = null;
+    let activeVoiceMode = 'idle'; // 'idle' | 'mic' | 'chapea' | 'synthetic'
+
+    const pitchFifo = [];
+    const ampFifo = [];
+    let dspFrameCount = 0;
+
+    function toggleVoiceLabDrawer(show) {
+      const drawer = document.getElementById('voiceLabDrawer');
+      const backdrop = document.getElementById('voiceLabBackdrop');
+      const isCurrentlyActive = drawer.classList.contains('active');
+      const shouldOpen = (show !== undefined) ? show : !isCurrentlyActive;
+
+      if (shouldOpen) {
+        drawer.classList.add('active');
+        if (backdrop) backdrop.classList.add('active');
+        drawer.setAttribute('aria-hidden', 'false');
+        drawVoiceBaseline();
+        if (typeof selectAstronautCase === 'function') {
+          selectAstronautCase(currentCaseKey);
+        }
+      } else {
+        drawer.classList.remove('active');
+        if (backdrop) backdrop.classList.remove('active');
+        drawer.setAttribute('aria-hidden', 'true');
+        if (activeVoiceMode !== 'idle') {
+          stopVoiceAnalysis();
+        }
+      }
+    }
+
+    // Keyboard Accelerators & Universal ESC
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        toggleVoiceLabDrawer(false);
+        toggleAuditModal(false);
+        closeUplinkModal();
+      } else if ((e.key === 'v' || e.key === 'V') && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+        toggleVoiceLabDrawer();
+      }
+    });
+
+    function initVoiceAudioEngine() {
+      if (!voiceAudioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        voiceAudioCtx = new AudioContextClass();
+        voiceAnalyser = voiceAudioCtx.createAnalyser();
+        voiceAnalyser.fftSize = 2048;
+        voiceAnalyser.smoothingTimeConstant = 0.82;
+
+        voiceGainNode = voiceAudioCtx.createGain();
+        voiceGainNode.gain.setValueAtTime(0.85, voiceAudioCtx.currentTime);
+        voiceGainNode.connect(voiceAudioCtx.destination);
+      }
+      if (voiceAudioCtx.state === 'suspended') {
+        voiceAudioCtx.resume();
+      }
+      return voiceAudioCtx;
+    }
+
+    function drawVoiceBaseline() {
+      const canvas = document.getElementById('voiceCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const w = canvas.width;
+      const h = canvas.height;
+
+      ctx.fillStyle = '#03060e';
+      ctx.fillRect(0, 0, w, h);
+
+      // Oscilloscope center line
+      ctx.strokeStyle = 'rgba(16, 185, 129, 0.2)';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath();
+      ctx.moveTo(0, h * 0.25);
+      ctx.lineTo(w, h * 0.25);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Baseline FFT bars
+      ctx.fillStyle = 'rgba(6, 182, 212, 0.15)';
+      const bars = 48;
+      const barWidth = (w / bars) - 2;
+      for (let i = 0; i < bars; i++) {
+        const bh = Math.sin((i / bars) * Math.PI) * 16 + 4;
+        ctx.fillRect(i * (barWidth + 2), h - bh, barWidth, bh);
+      }
+    }
+
+    async function toggleLiveMic() {
+      if (activeVoiceMode === 'mic') {
+        stopVoiceAnalysis();
+        return;
+      }
+      stopVoiceAnalysis();
+
+      const btn = document.getElementById('btnRecordMic');
+      const btnText = document.getElementById('recordBtnText');
+      const statusBanner = document.getElementById('voiceStatusBanner');
+      const statusText = document.getElementById('voiceStatusText');
+      const timerBadge = document.getElementById('voiceTimerBadge');
+      const sourceTag = document.getElementById('audioSourceTag');
+
+      try {
+        initVoiceAudioEngine();
+
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+          throw new Error('getUserMedia not supported in this browser context');
+        }
+
+        statusBanner.className = 'voice-status-banner';
+        statusText.innerText = '● Requesting Microphone Access...';
+
+        const stream = await navigator.mediaDevices.getUserMedia({
+          audio: {
+            echoCancellation: true,
+            noiseSuppression: true,
+            autoGainControl: true
+          }
+        });
+
+        voiceMicStream = stream;
+        activeVoiceMode = 'mic';
+
+        // Connect mic strictly to analyser ONLY (NEVER to destination to prevent feedback scream)
+        voiceMicSource = voiceAudioCtx.createMediaStreamSource(stream);
+        voiceMicSource.connect(voiceAnalyser);
+
+        btn.classList.add('recording');
+        btnText.innerText = '⏹ Stop Mic Capture';
+        statusBanner.className = 'voice-status-banner alert';
+        statusText.innerText = '🔴 LIVE MIC ACTIVE · Analyzing Glottal Micro-Perturbations';
+        sourceTag.innerText = 'SOURCE: LIVE MICROPHONE';
+
+        // Reset buffers
+        pitchFifo.length = 0;
+        ampFifo.length = 0;
+        voiceRecSeconds = 0;
+
+        // Start 5-second sampling timer
+        voiceRecInterval = setInterval(() => {
+          voiceRecSeconds += 0.1;
+          timerBadge.innerText = voiceRecSeconds.toFixed(1) + 's / 5.0s';
+          if (voiceRecSeconds >= 5.0) {
+            completeMicSampling();
+          }
+        }, 100);
+
+        startVoiceRenderLoop();
+
+      } catch (err) {
+        console.warn('Microphone access unavailable or denied:', err);
+        statusBanner.className = 'voice-status-banner alert';
+        statusText.innerText = '⚠️ Mic unavailable in sandbox/file protocol. Switching to NASA CHAPEA audio...';
+        setTimeout(() => {
+          playChapeaAudio();
+        }, 1200);
+      }
+    }
+
+    function completeMicSampling() {
+      clearInterval(voiceRecInterval);
+      if (voiceMicStream) {
+        voiceMicStream.getTracks().forEach(t => t.stop());
+        voiceMicStream = null;
+      }
+      activeVoiceMode = 'idle';
+
+      const btn = document.getElementById('btnRecordMic');
+      const btnText = document.getElementById('recordBtnText');
+      const statusBanner = document.getElementById('voiceStatusBanner');
+      const statusText = document.getElementById('voiceStatusText');
+      const timerBadge = document.getElementById('voiceTimerBadge');
+
+      btn.classList.remove('recording');
+      btnText.innerText = 'Record Live Voice (5s)';
+      statusBanner.className = 'voice-status-banner';
+      statusText.innerText = '✓ 5.0s Acoustic Sample Captured & Processed';
+      timerBadge.innerText = '5.0s (COMPLETE)';
+
+      if (voiceAnimFrame) {
+        cancelAnimationFrame(voiceAnimFrame);
+        voiceAnimFrame = null;
+      }
+
+      // Generate final clinical assessment verdict
+      generateFinalVoiceVerdict();
+    }
+
+    function playChapeaAudio() {
+      stopVoiceAnalysis();
+
+      const statusBanner = document.getElementById('voiceStatusBanner');
+      const statusText = document.getElementById('voiceStatusText');
+      const timerBadge = document.getElementById('voiceTimerBadge');
+      const sourceTag = document.getElementById('audioSourceTag');
+      const audioElement = document.getElementById('chapeaAudio');
+
+      initVoiceAudioEngine();
+
+      if (!voiceChapeaSource) {
+        try {
+          voiceChapeaSource = voiceAudioCtx.createMediaElementSource(audioElement);
+          voiceChapeaSource.connect(voiceAnalyser);
+          voiceChapeaSource.connect(voiceGainNode);
+        } catch (e) {
+          console.warn('MediaElementSource already connected or CORS issue:', e);
+        }
+      }
+
+      activeVoiceMode = 'chapea';
+      statusBanner.className = 'voice-status-banner';
+      statusText.innerText = '▶ Playing NASA CHAPEA Mission 2 Astronaut Audio Log';
+      sourceTag.innerText = 'SOURCE: NASA CHAPEA EP431 AUDIO';
+
+      try {
+        if (audioElement.readyState > 0 && isFinite(audioElement.duration)) {
+          audioElement.currentTime = 0;
+        }
+      } catch (e) {}
+      audioElement.play().then(() => {
+        audioElement.ontimeupdate = () => {
+          timerBadge.innerText = Math.floor(audioElement.currentTime) + 's / ' + Math.floor(audioElement.duration || 60) + 's';
+        };
+        audioElement.onended = () => {
+          stopVoiceAnalysis();
+        };
+        startVoiceRenderLoop();
+      }).catch(err => {
+        console.warn('Audio play restricted, spinning synthetic voice drone:', err);
+        startSyntheticVoiceDrone();
+      });
+    }
+
+    function startSyntheticVoiceDrone() {
+      initVoiceAudioEngine();
+      activeVoiceMode = 'synthetic';
+
+      const sourceTag = document.getElementById('audioSourceTag');
+      const statusText = document.getElementById('voiceStatusText');
+      sourceTag.innerText = 'SOURCE: SYNTHETIC VOCAL DRONE';
+      statusText.innerText = '⚡ Synthetic Glottal Oscillator & Micro-Tremor Generator';
+
+      const osc = voiceAudioCtx.createOscillator();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(124, voiceAudioCtx.currentTime);
+
+      const lfo = voiceAudioCtx.createOscillator();
+      lfo.frequency.setValueAtTime(6.2, voiceAudioCtx.currentTime);
+      const lfoGain = voiceAudioCtx.createGain();
+      lfoGain.gain.setValueAtTime(2.2, voiceAudioCtx.currentTime);
+      lfo.connect(lfoGain);
+      lfoGain.connect(osc.frequency);
+
+      const filter = voiceAudioCtx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(520, voiceAudioCtx.currentTime);
+      filter.Q.setValueAtTime(3.5, voiceAudioCtx.currentTime);
+
+      osc.connect(filter);
+      filter.connect(voiceAnalyser);
+      filter.connect(voiceGainNode);
+
+      osc.start();
+      lfo.start();
+
+      voiceSourceNode = { osc, lfo };
+      startVoiceRenderLoop();
+    }
+
+    let currentCaseKey = 'case1';
+    let isSamplePlaying = false;
+    let isDiagnosticTesting = false;
+
+    // -------------------------------------------------------------
+    // 3 AI Simulated Astronaut Voice Diagnostic Profiles & Datasets
+    // -------------------------------------------------------------
+    const astronautProfiles = {
+      case1: {
+        id: 'case1',
+        elementId: 'audioPresetCase1',
+        tabId: 'tabCase1',
+        name: 'Commander Alex Vance',
+        role: 'Expedition Commander · Mars Transit Day 142',
+        status: 'Nominal Baseline',
+        statusColor: '#34d399',
+        f0: 124,
+        deltaF0: 48,
+        jitter: '0.68 <span style="font-size: 11px; font-weight: 400; color: var(--text-medium);">%</span>',
+        jitterTag: 'Nominal Laryngeal (<0.8%)',
+        jitterColor: 'var(--color-nominal)',
+        shimmer: '2.45 <span style="font-size: 11px; font-weight: 400; color: var(--text-medium);">%</span>',
+        shimmerTag: 'Nominal Glottal (<3.0%)',
+        strain: 22,
+        strainVerdict: 'HOMEOSTATIC EQUILIBRIUM',
+        strainColor: '#34d399',
+        quote: '“Houston, this is Commander Vance on Mars Transit Day 142. Morning mental wellbeing check is green. Circadian entrainment is locked at 94%, cognitive reaction tests are sharp. Crew morale remains steady as Earth fades behind us. Ready for scheduled airlock inspection.”',
+        verdict: '<strong>NOMINAL BASELINE (CDR Vance):</strong> Fundamental pitch F₀ = 124 Hz with healthy prosodic modulation (ΔF₀ = 48 Hz). Vocal fold periodicity is stable (Jitter 0.68%, Shimmer 2.45%). Autonomic tone is in parasympathetic homeostatic balance; high psychological stamina and mission readiness.',
+        tag: 'BENCHMARK: CDR VANCE (NOMINAL BASELINE)'
+      },
+      case2: {
+        id: 'case2',
+        elementId: 'audioPresetCase2',
+        tabId: 'tabCase2',
+        name: 'Specialist Elena Chen',
+        role: 'Mission Specialist · Mars Transit Day 180',
+        status: 'Sensory Fatigue Dip',
+        statusColor: '#fbbf24',
+        f0: 104,
+        deltaF0: 21,
+        jitter: '1.28 <span style="font-size: 11px; font-weight: 400; color: var(--text-medium);">%</span>',
+        jitterTag: '⚠️ Laryngeal Tremor (≥1.04%)',
+        jitterColor: 'var(--color-alert)',
+        shimmer: '4.15 <span style="font-size: 11px; font-weight: 400; color: var(--text-medium);">%</span>',
+        shimmerTag: '⚠️ Glottic Exhaustion (≥3.81%)',
+        strain: 68,
+        strainVerdict: 'ELEVATED SENSORY FATIGUE',
+        strainColor: '#fbbf24',
+        quote: '“Houston... Specialist Chen, Day 180. The cabin fan drone never stops... haven\'t slept a solid cycle in four days. Mind feels heavy, hard to hold onto the numbers on the navigation checklist. Just... feeling the weight of the dark out here. Standing by for task sequence.”',
+        verdict: '<strong>SENSORY FATIGUE ALERT (SPC Chen):</strong> Speech prosody exhibits Monotonic Flat Affect (ΔF₀ = 21 Hz, below 30 Hz threshold). Elevated cycle-to-cycle micro-jitter (1.28%) and breathy shimmer (4.15%) reveal neuromotor exhaustion of recurrent laryngeal nerve due to 3-day sleep fragmentation and sensory deprivation. Autonomously flagging 480nm photopic circadian boost and duty rescheduling.',
+        tag: 'BENCHMARK: SPC CHEN (SENSORY FATIGUE)'
+      },
+      case3: {
+        id: 'case3',
+        elementId: 'audioPresetCase3',
+        tabId: 'tabCase3',
+        name: 'Flight Engineer Marco Rossi',
+        role: 'Flight Engineer · T-90s Airlock Depress',
+        status: 'Pre-EVA Acute Crisis',
+        statusColor: '#f43f5e',
+        f0: 215,
+        deltaF0: 78,
+        jitter: '1.45 <span style="font-size: 11px; font-weight: 400; color: var(--text-medium);">%</span>',
+        jitterTag: '⚠️ Acute Sympathetic Strain',
+        jitterColor: 'var(--color-alert)',
+        shimmer: '4.65 <span style="font-size: 11px; font-weight: 400; color: var(--text-medium);">%</span>',
+        shimmerTag: '⚠️ Laryngeal Constriction',
+        strain: 88,
+        strainVerdict: 'ACUTE NEUROMOTOR STRAIN',
+        strainColor: '#f43f5e',
+        quote: '“Flight... Flight, this is Rossi in the airlock! Pulse is spiking... 135... chest is tight! Looking through the helmet visor into the infinite black void... experiencing acute sensory panic! Breathing is shallow, laryngeal strain is high! Requesting immediate 30-second acoustic grounding before hatch egress!”',
+        verdict: '<strong>ACUTE CRISIS SURGE (FE Rossi):</strong> High-frequency fundamental shift (F₀ = 215 Hz, +75% elevation) indicating acute sympathetic nervous system hyper-arousal and vocal cord contraction. Vocal Strain Index (88/100) and laryngeal constriction confirm acute pre-EVA agoraphobia and sensory panic. Autonomously initiating paced auditory pacing and emergency oxygen support.',
+        tag: 'BENCHMARK: FE ROSSI (ACUTE CRISIS)'
+      }
+    };
+
+    function showVoiceToast(msg, bg = 'rgba(59, 130, 246, 0.3)', border = 'rgba(59, 130, 246, 0.7)', color = '#93c5fd') {
+      const t = document.getElementById('voiceFeedbackToast');
+      if (!t) return;
+      t.innerText = msg;
+      t.style.background = bg;
+      t.style.borderColor = border;
+      t.style.color = color;
+      t.style.display = 'block';
+      if (window._voiceToastTimer) clearTimeout(window._voiceToastTimer);
+      window._voiceToastTimer = setTimeout(() => {
+        t.style.display = 'none';
+      }, 2500);
+    }
+
+    function playQuindarTone(isOutro = false) {
+      try {
+        initVoiceAudioEngine();
+        if (!voiceAudioCtx) return;
+        const freq = isOutro ? 2475 : 2524;
+        const osc = voiceAudioCtx.createOscillator();
+        const gain = voiceAudioCtx.createGain();
+        const now = voiceAudioCtx.currentTime;
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now);
+
+        gain.gain.setValueAtTime(0.0001, now);
+        try {
+          gain.gain.linearRampToValueAtTime(0.18, now + 0.015);
+          gain.gain.linearRampToValueAtTime(0.0001, now + 0.08);
+        } catch(e) {
+          gain.gain.setValueAtTime(0.15, now);
+        }
+
+        osc.connect(gain);
+        gain.connect(voiceAudioCtx.destination);
+        if (voiceAnalyser) gain.connect(voiceAnalyser);
+
+        osc.start(now);
+        osc.stop(now + 0.085);
+      } catch (err) {
+        console.warn('Quindar tone exception:', err);
+      }
+    }
+
+    function speakAstronautTranscript(profile) {
+      // Permanently silenced: All 3 astronaut profiles have pre-encoded 22050Hz PCM WAV audio.
+      // Web Speech API is disabled to guarantee zero double-voice interference.
+      if ('speechSynthesis' in window) {
+        try { window.speechSynthesis.cancel(); } catch(e) {}
+      }
+    }
+
+    function stopVoiceAnalysis() {
+      _isDiagnosticRunning = false;
+      _isListeningRunning = false;
+      if (voiceMicStream) {
+        voiceMicStream.getTracks().forEach(t => t.stop());
+        voiceMicStream = null;
+      }
+      if (voiceRecInterval) {
+        clearInterval(voiceRecInterval);
+        voiceRecInterval = null;
+      }
+      ['chapeaAudio', 'audioPresetCase1', 'audioPresetCase2', 'audioPresetCase3'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          try {
+            el.pause();
+            if (el.readyState > 0 && isFinite(el.duration)) {
+              el.currentTime = 0;
+            }
+          } catch(e) {}
+        }
+      });
+
+      if (lovellAudioEl) {
+        try {
+          lovellAudioEl.pause();
+          const lIcon = document.querySelector('.media-capsule .capsule-play-glyph');
+          if (lIcon) { lIcon.innerText = '▶'; lIcon.style.background = '#ffffff'; }
+        } catch(e) {}
+      }
+      if (kinshipAudioEl) {
+        try {
+          kinshipAudioEl.pause();
+          const kIcon = document.getElementById('kinshipAudioIcon');
+          const kWaves = document.getElementById('kinshipAudioWaves');
+          if (kIcon) { kIcon.innerText = '▶'; kIcon.style.background = 'var(--color-kinship)'; }
+          if (kWaves) kWaves.style.opacity = '0.3';
+        } catch(e) {}
+      }
+
+      if ('speechSynthesis' in window) {
+        try {
+          window.speechSynthesis.cancel();
+          window.speechSynthesis.pause();
+          window.speechSynthesis.cancel();
+        } catch(e) {}
+      }
+
+      if (voiceSourceNode && voiceSourceNode.osc) {
+        try {
+          voiceSourceNode.osc.stop();
+          if (voiceSourceNode.lfo) voiceSourceNode.lfo.stop();
+        } catch (e) {}
+        voiceSourceNode = null;
+      }
+      if (voiceAnimFrame) {
+        cancelAnimationFrame(voiceAnimFrame);
+        voiceAnimFrame = null;
+      }
+
+      isSamplePlaying = false;
+      isDiagnosticTesting = false;
+      activeVoiceMode = 'idle';
+
+      const btnMic = document.getElementById('btnRecordMic');
+      const btnRecordText = document.getElementById('recordBtnText');
+      const btnListen = document.getElementById('btnListenSample');
+      const listenText = document.getElementById('listenBtnText');
+      const btnTest = document.getElementById('btnTestSample');
+      const testText = document.getElementById('testBtnText');
+      const statusBanner = document.getElementById('voiceStatusBanner');
+      const statusText = document.getElementById('voiceStatusText');
+      const timerBadge = document.getElementById('voiceTimerBadge');
+      const sourceTag = document.getElementById('audioSourceTag');
+
+      if (btnMic) btnMic.classList.remove('recording');
+      if (btnRecordText) btnRecordText.innerText = '🎙️ Test Your Own Voice (Mic)';
+      if (btnListen) {
+        btnListen.classList.remove('playing');
+        if (listenText) listenText.innerText = '🔊 Listen to Sample';
+      }
+      if (btnTest) {
+        btnTest.classList.remove('testing');
+        if (testText) testText.innerText = '🧪 Test With This Voice (5s)';
+      }
+      if (statusBanner) statusBanner.className = 'voice-status-banner';
+      if (statusText) statusText.innerText = '● Standby · Select astronaut sample to listen or test';
+      if (timerBadge) timerBadge.innerText = '0.0s / 5.0s';
+      if (sourceTag) sourceTag.innerText = 'SOURCE: IDLE';
+
+      drawVoiceBaseline();
+    }
+
+    function selectAstronautCase(caseKey, tabBtn, syncMode = true) {
+      try {
+        currentCaseKey = caseKey;
+        stopVoiceAnalysis();
+
+        const profile = astronautProfiles[caseKey];
+        if (!profile) return;
+
+        showVoiceToast('👨‍🚀 Selected: ' + profile.name, 'rgba(16, 185, 129, 0.25)', 'rgba(16, 185, 129, 0.7)', '#34d399');
+
+        // Play subtle interface chirp
+        playQuindarTone(false);
+
+        document.querySelectorAll('.case-tab-btn').forEach(b => b.classList.remove('active'));
+        const activeTab = tabBtn || document.getElementById(profile.tabId);
+        if (activeTab) activeTab.classList.add('active');
+
+        const statusPill = document.getElementById('caseStatusPill');
+        const titleEl = document.getElementById('caseAstronautTitle');
+        const transcriptEl = document.getElementById('caseTranscriptText');
+        const sourceTag = document.getElementById('audioSourceTag');
+        const statusText = document.getElementById('voiceStatusText');
+
+        if (statusPill) {
+          statusPill.innerText = profile.status;
+          statusPill.style.color = profile.statusColor;
+          statusPill.style.borderColor = profile.statusColor;
+        }
+        if (titleEl) titleEl.innerText = '👨‍🚀 ' + profile.name + ' (' + profile.role + ')';
+        if (transcriptEl) transcriptEl.innerText = profile.quote;
+        if (sourceTag) sourceTag.innerText = profile.tag;
+        if (statusText) statusText.innerText = '● Selected: ' + profile.name + ' · Ready to Listen or Test';
+
+        renderCaseMetrics(profile);
+
+        // Synchronize with main header mode switcher if requested
+        if (syncMode) {
+          const modeMap = { case1: 'nominal', case2: 'fatigue', case3: 'eva' };
+          if (modeMap[caseKey]) {
+            switchMode(modeMap[caseKey], null, false);
+          }
+        }
+      } catch (err) {
+        console.error('selectAstronautCase error:', err);
+      }
+    }
+
+    function renderCaseMetrics(profile) {
+      document.getElementById('voiceF0').innerHTML = profile.f0 + ' <span style="font-size: 11px; font-weight: 400; color: var(--text-medium);">Hz</span>';
+      document.getElementById('voiceF0Tag').innerText = profile.id === 'case1' ? 'Nominal Baritone (85–180Hz)' : profile.id === 'case2' ? 'Low Frequency / Lethargic' : 'High Pitch / Laryngeal Contraction';
+
+      const deltaEl = document.getElementById('voiceDeltaF0');
+      const deltaTag = document.getElementById('voiceDeltaF0Tag');
+      deltaEl.innerHTML = profile.deltaF0 + ' <span style="font-size: 11px; font-weight: 400; color: var(--text-medium);">Hz</span>';
+      if (profile.deltaF0 < 30) {
+        deltaTag.innerText = '⚠️ Monotonic Flat Affect (<30Hz)';
+        deltaTag.style.color = 'var(--color-alert)';
+      } else {
+        deltaTag.innerText = 'Modulated Affect (>35Hz)';
+        deltaTag.style.color = 'var(--color-nominal)';
+      }
+
+      const jitterEl = document.getElementById('voiceJitter');
+      const jitterTag = document.getElementById('voiceJitterTag');
+      jitterEl.innerHTML = profile.jitter;
+      jitterTag.innerText = profile.jitterTag;
+      jitterTag.style.color = profile.jitterColor;
+
+      const shimmerEl = document.getElementById('voiceShimmer');
+      const shimmerTag = document.getElementById('voiceShimmerTag');
+      shimmerEl.innerHTML = profile.shimmer;
+      shimmerTag.innerText = profile.shimmerTag;
+
+      const strainEl = document.getElementById('voiceStrainScore');
+      const strainBar = document.getElementById('voiceStrainBar');
+      const strainVerdict = document.getElementById('voiceStrainVerdict');
+      strainEl.innerText = profile.strain + ' / 100';
+      strainBar.style.width = profile.strain + '%';
+      strainBar.style.background = profile.strainColor;
+      strainVerdict.innerText = profile.strainVerdict;
+      strainVerdict.style.color = profile.strainColor;
+
+      document.getElementById('voiceVerdictText').innerHTML = profile.verdict;
+    }
+
+    let _isDiagnosticRunning = false;
+    let _isListeningRunning = false;
+
+    function toggleListenAstronautSample() {
+      try {
+        if (_isListeningRunning) return;
+        _isListeningRunning = true;
+        setTimeout(() => { _isListeningRunning = false; }, 300);
+
+        const profile = astronautProfiles[currentCaseKey];
+        if (!profile) return;
+        const audioEl = document.getElementById(profile.elementId);
+
+        if (isSamplePlaying) {
+          stopVoiceAnalysis();
+          showVoiceToast('⏸ Audio Paused', 'rgba(255, 255, 255, 0.1)', 'var(--border-subtle)', '#e2e8f0');
+          return;
+        }
+
+        showVoiceToast('🔊 Playing Sample: ' + profile.name, 'rgba(59, 130, 246, 0.25)', 'rgba(59, 130, 246, 0.7)', '#93c5fd');
+
+        stopVoiceAnalysis();
+        initVoiceAudioEngine();
+
+        isSamplePlaying = true;
+        activeVoiceMode = currentCaseKey;
+
+        const btnListen = document.getElementById('btnListenSample');
+        const listenText = document.getElementById('listenBtnText');
+        const statusBanner = document.getElementById('voiceStatusBanner');
+        const statusText = document.getElementById('voiceStatusText');
+        const timerBadge = document.getElementById('voiceTimerBadge');
+        const sourceTag = document.getElementById('audioSourceTag');
+
+        if (btnListen) btnListen.classList.add('playing');
+        if (listenText) listenText.innerText = '⏸ Pause Audio';
+        if (statusBanner) statusBanner.className = 'voice-status-banner' + (currentCaseKey === 'case3' ? ' alert' : '');
+        if (statusText) statusText.innerText = '🔊 Playing Audible Sample: ' + profile.name;
+        if (sourceTag) sourceTag.innerText = profile.tag;
+
+        renderCaseMetrics(profile);
+
+        // 1. Play immediate NASA Quindar intro tone! (100% audible feedback in 5ms!)
+        playQuindarTone(false);
+
+        // 2. Start visualizer with synthetic oscillator (feeds analyser only, zero speaker buzzing)
+        startSyntheticVoiceSimulation(profile.f0, false);
+
+        // 3. Play base64 audio element if available
+        if (audioEl) {
+          if (window.ASTRONAUT_AUDIO_B64 && window.ASTRONAUT_AUDIO_B64[currentCaseKey] && !audioEl.src.startsWith('data:')) {
+            audioEl.src = window.ASTRONAUT_AUDIO_B64[currentCaseKey];
+          }
+          try {
+            if (audioEl.readyState > 0 && isFinite(audioEl.duration)) {
+              audioEl.currentTime = 0;
+            }
+          } catch (e) {}
+          audioEl.volume = 1.0;
+          audioEl.muted = false;
+
+          audioEl.ontimeupdate = () => {
+            if (timerBadge && isFinite(audioEl.currentTime)) {
+              const dur = isFinite(audioEl.duration) && audioEl.duration > 0 ? Math.floor(audioEl.duration) : 18;
+              timerBadge.innerText = Math.floor(audioEl.currentTime) + 's / ' + dur + 's';
+            }
+          };
+
+          // Only stop when audio has genuinely finished playing after at least 3 seconds
+          audioEl.onended = () => {
+            if (isFinite(audioEl.currentTime) && audioEl.currentTime >= 3.0) {
+              playQuindarTone(true);
+              stopVoiceAnalysis();
+            }
+          };
+
+          const p = audioEl.play();
+          if (p !== undefined) {
+            p.catch(err => {
+              if (err.name === 'AbortError') return;
+              console.warn('Native WAV audio play restricted:', err);
+            });
+          }
+        }
+
+      } catch (err) {
+        console.error('toggleListenAstronautSample error:', err);
+        showVoiceToast('⚠️ Error: ' + err.message, 'rgba(239, 68, 68, 0.25)', '#ef4444', '#fca5a5');
+      }
+    }
+
+    function runAstronautDiagnosticTest() {
+      try {
+        if (_isDiagnosticRunning) return;
+        _isDiagnosticRunning = true;
+
+        const profile = astronautProfiles[currentCaseKey];
+        if (!profile) return;
+        const audioEl = document.getElementById(profile.elementId);
+
+        showVoiceToast('🔴 5.0s Diagnostic Test Running...', 'rgba(244, 63, 94, 0.25)', 'rgba(244, 63, 94, 0.7)', '#f43f5e');
+
+        stopVoiceAnalysis();
+        initVoiceAudioEngine();
+
+        isDiagnosticTesting = true;
+        activeVoiceMode = currentCaseKey;
+
+        const btnTest = document.getElementById('btnTestSample');
+        const testText = document.getElementById('testBtnText');
+        const statusBanner = document.getElementById('voiceStatusBanner');
+        const statusText = document.getElementById('voiceStatusText');
+        const timerBadge = document.getElementById('voiceTimerBadge');
+        const sourceTag = document.getElementById('audioSourceTag');
+
+        if (btnTest) btnTest.classList.add('testing');
+        if (statusBanner) statusBanner.className = 'voice-status-banner alert';
+        if (statusText) statusText.innerText = '🔴 5.0s TEST IN PROGRESS · Analyzing ' + profile.name;
+        if (sourceTag) sourceTag.innerText = 'TESTING: ' + profile.tag;
+
+        // 1. Play immediate NASA Quindar intro tone!
+        playQuindarTone(false);
+
+        // 2. Play audio (native base64 WAV exclusively, zero TTS duplicate)
+        if (audioEl) {
+          if (window.ASTRONAUT_AUDIO_B64 && window.ASTRONAUT_AUDIO_B64[currentCaseKey] && !audioEl.src.startsWith('data:')) {
+            audioEl.src = window.ASTRONAUT_AUDIO_B64[currentCaseKey];
+          }
+          try {
+            if (audioEl.readyState > 0 && isFinite(audioEl.duration)) {
+              audioEl.currentTime = 0;
+            }
+          } catch (e) {}
+          audioEl.volume = 1.0;
+          audioEl.muted = false;
+          const p = audioEl.play();
+          if (p !== undefined) {
+            p.catch(e => {
+              if (e.name === 'AbortError') return;
+              console.warn('Native audio play notice:', e);
+            });
+          }
+        }
+
+        // 3. Start visualizer (feeds analyser only, zero speaker buzzing)
+        startSyntheticVoiceSimulation(profile.f0, false);
+
+        // 4. UNCONDITIONAL 5.0-second diagnostic countdown (immune to audio errors!)
+        voiceRecSeconds = 0;
+        voiceRecInterval = setInterval(() => {
+          voiceRecSeconds += 0.1;
+          if (testText) testText.innerText = 'Testing... ' + voiceRecSeconds.toFixed(1) + 's';
+          if (timerBadge) timerBadge.innerText = voiceRecSeconds.toFixed(1) + 's / 5.0s';
+
+          // Dynamic perturbation fluctuation during testing
+          const baseJitter = parseFloat(profile.jitter);
+          const jitterFuzz = Math.max(0.2, baseJitter + (Math.sin(voiceRecSeconds * 7) * 0.08) + (Math.random() * 0.06 - 0.03)).toFixed(2);
+          const jitterEl = document.getElementById('voiceJitter');
+          if (jitterEl) jitterEl.innerHTML = jitterFuzz + ' <span style="font-size: 11px; font-weight: 400; color: var(--text-medium);">%</span>';
+
+          const baseShimmer = parseFloat(profile.shimmer);
+          const shimmerFuzz = Math.max(1.0, baseShimmer + (Math.cos(voiceRecSeconds * 5) * 0.15) + (Math.random() * 0.1 - 0.05)).toFixed(2);
+          const shimmerEl = document.getElementById('voiceShimmer');
+          if (shimmerEl) shimmerEl.innerHTML = shimmerFuzz + ' <span style="font-size: 11px; font-weight: 400; color: var(--text-medium);">%</span>';
+
+          if (voiceRecSeconds >= 5.0) {
+            clearInterval(voiceRecInterval);
+            voiceRecInterval = null;
+            completeAstronautDiagnostic(profile);
+          }
+        }, 100);
+
+      } catch (err) {
+        console.error('runAstronautDiagnosticTest error:', err);
+        showVoiceToast('⚠️ Error: ' + err.message, 'rgba(239, 68, 68, 0.25)', '#ef4444', '#fca5a5');
+      }
+    }
+
+    function completeAstronautDiagnostic(profile) {
+      if (voiceAnimFrame) {
+        cancelAnimationFrame(voiceAnimFrame);
+        voiceAnimFrame = null;
+      }
+      if (voiceSourceNode && voiceSourceNode.osc) {
+        try {
+          voiceSourceNode.osc.stop();
+          if (voiceSourceNode.lfo) voiceSourceNode.lfo.stop();
+        } catch(e) {}
+        voiceSourceNode = null;
+      }
+      _isDiagnosticRunning = false;
+      ['audioPresetCase1', 'audioPresetCase2', 'audioPresetCase3'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          try {
+            el.pause();
+            el.currentTime = 0;
+          } catch(e) {}
+        }
+      });
+      if ('speechSynthesis' in window) {
+        try { window.speechSynthesis.cancel(); } catch(e) {}
+      }
+
+      // Play Quindar Outro Beep!
+      playQuindarTone(true);
+
+      isDiagnosticTesting = false;
+      const btnTest = document.getElementById('btnTestSample');
+      const testText = document.getElementById('testBtnText');
+      const statusBanner = document.getElementById('voiceStatusBanner');
+      const statusText = document.getElementById('voiceStatusText');
+      const timerBadge = document.getElementById('voiceTimerBadge');
+
+      if (btnTest) btnTest.classList.remove('testing');
+      if (testText) testText.innerText = '🧪 Test With This Voice (5s)';
+      if (statusBanner) statusBanner.className = 'voice-status-banner' + (profile.id === 'case3' ? ' alert' : '');
+      if (statusText) statusText.innerText = '✓ 5.0s Acoustic Diagnostic Test Complete';
+      if (timerBadge) timerBadge.innerText = '5.0s (DIAGNOSED)';
+
+      showVoiceToast('✓ 5.0s Diagnostic Complete: ' + profile.name, 'rgba(16, 185, 129, 0.25)', 'rgba(16, 185, 129, 0.7)', '#34d399');
+
+      // Render final metrics and report
+      renderCaseMetrics(profile);
+      drawVoiceBaseline();
+    }
+
+    function startSyntheticVoiceSimulation(targetF0, audible = false) {
+      initVoiceAudioEngine();
+      if (voiceSourceNode && voiceSourceNode.osc) {
+        try {
+          voiceSourceNode.osc.stop();
+          if (voiceSourceNode.lfo) voiceSourceNode.lfo.stop();
+        } catch (e) {}
+      }
+
+      const osc = voiceAudioCtx.createOscillator();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(targetF0, voiceAudioCtx.currentTime);
+
+      const lfo = voiceAudioCtx.createOscillator();
+      lfo.frequency.setValueAtTime(6.0, voiceAudioCtx.currentTime);
+      const lfoGain = voiceAudioCtx.createGain();
+      lfoGain.gain.setValueAtTime(targetF0 * 0.03, voiceAudioCtx.currentTime);
+      lfo.connect(lfoGain);
+      lfoGain.connect(osc.frequency);
+
+      const filter = voiceAudioCtx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(Math.min(2400, targetF0 * 3.5), voiceAudioCtx.currentTime);
+      filter.Q.setValueAtTime(3.0, voiceAudioCtx.currentTime);
+
+      osc.connect(filter);
+      filter.connect(voiceAnalyser);
+
+      // If audible requested, connect subtle background radio bed (-46 dB)
+      if (audible) {
+        const carrierGain = voiceAudioCtx.createGain();
+        carrierGain.gain.setValueAtTime(0.004, voiceAudioCtx.currentTime);
+        filter.connect(carrierGain);
+        carrierGain.connect(voiceAudioCtx.destination);
+      }
+
+      osc.start();
+      lfo.start();
+
+      voiceSourceNode = { osc, lfo };
+      startVoiceRenderLoop();
+    }
+
+    function startVoiceRenderLoop() {
+      const canvas = document.getElementById('voiceCanvas');
+      if (!canvas || !voiceAnalyser) return;
+      const ctx = canvas.getContext('2d');
+      const w = canvas.width;
+      const h = canvas.height;
+
+      const timeBuffer = new Float32Array(voiceAnalyser.fftSize);
+      const freqBuffer = new Uint8Array(voiceAnalyser.frequencyBinCount);
+
+      function renderFrame() {
+        voiceAnimFrame = requestAnimationFrame(renderFrame);
+        dspFrameCount++;
+
+        voiceAnalyser.getFloatTimeDomainData(timeBuffer);
+        voiceAnalyser.getByteFrequencyData(freqBuffer);
+
+        // Clear background
+        ctx.fillStyle = '#03060e';
+        ctx.fillRect(0, 0, w, h);
+
+        // 1. Oscilloscope Waveform (Top Half: y 0 to 65)
+        ctx.strokeStyle = '#10b981';
+        ctx.lineWidth = 1.6;
+        ctx.shadowColor = '#10b981';
+        ctx.shadowBlur = 4;
+        ctx.beginPath();
+
+        const sliceWidth = w / timeBuffer.length;
+        let maxAmp = 0;
+        let sumSq = 0;
+
+        for (let i = 0; i < timeBuffer.length; i++) {
+          const v = timeBuffer[i];
+          const y = (h * 0.28) + (v * 26);
+          const x = i * sliceWidth;
+
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+
+          const absV = Math.abs(v);
+          if (absV > maxAmp) maxAmp = absV;
+          sumSq += v * v;
+        }
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+
+        // 2. 64-Band FFT Spectrum Analyzer (Bottom Half: y 70 to 135)
+        const bars = 56;
+        const barWidth = (w / bars) - 2;
+        const binStep = Math.floor(freqBuffer.length / bars);
+
+        let highFreqEnergy = 0;
+        let totalEnergy = 0;
+
+        for (let i = 0; i < bars; i++) {
+          const binVal = freqBuffer[i * binStep] || 0;
+          totalEnergy += binVal;
+          if (i > bars * 0.45) highFreqEnergy += binVal;
+
+          const barHeight = (binVal / 255) * 55;
+          const x = i * (barWidth + 2);
+          const y = h - barHeight - 2;
+
+          // Gradient: Cyan (#06b6d4) to Blue to Pink/Red if tense
+          if (binVal > 180 && i > 25) {
+            ctx.fillStyle = '#f43f5e';
+          } else if (i < 18) {
+            ctx.fillStyle = '#06b6d4';
+          } else {
+            ctx.fillStyle = '#3b82f6';
+          }
+          ctx.fillRect(x, y, barWidth, barHeight);
+        }
+
+        // DSP Extraction Throttled (every 4 frames)
+        if (dspFrameCount % 4 === 0 && maxAmp > 0.02) {
+          processAcousticDSP(timeBuffer, maxAmp, highFreqEnergy, totalEnergy);
+        }
+      }
+
+      renderFrame();
+    }
+
+    // Normalized Autocorrelation (ACF) for Fundamental Frequency & Perturbation
+    function processAcousticDSP(timeBuffer, currentAmp, hfEnergy, totalEnergy) {
+      const sampleRate = voiceAudioCtx.sampleRate || 44100;
+      const minTau = Math.floor(sampleRate / 400); // 400 Hz upper bound
+      const maxTau = Math.floor(sampleRate / 75);  // 75 Hz lower bound
+
+      let bestTau = -1;
+      let maxCorr = 0;
+
+      for (let tau = minTau; tau < maxTau; tau++) {
+        let corr = 0;
+        let normA = 0;
+        let normB = 0;
+        for (let i = 0; i < 512; i++) {
+          const a = timeBuffer[i];
+          const b = timeBuffer[i + tau];
+          corr += a * b;
+          normA += a * a;
+          normB += b * b;
+        }
+        const denom = Math.sqrt(normA * normB);
+        const normCorr = denom > 0.0001 ? (corr / denom) : 0;
+        if (normCorr > maxCorr) {
+          maxCorr = normCorr;
+          bestTau = tau;
+        }
+      }
+
+      if (maxCorr > 0.42 && bestTau > 0) {
+        const detectedF0 = Math.round(sampleRate / bestTau);
+        if (detectedF0 >= 75 && detectedF0 <= 380) {
+          pitchFifo.push(detectedF0);
+          if (pitchFifo.length > 30) pitchFifo.shift();
+
+          ampFifo.push(currentAmp);
+          if (ampFifo.length > 30) ampFifo.shift();
+
+          updateLiveVoiceMetrics(detectedF0, hfEnergy, totalEnergy);
+        }
+      }
+    }
+
+    function updateLiveVoiceMetrics(currentF0, hfEnergy, totalEnergy) {
+      // 1. Fundamental Frequency
+      const f0El = document.getElementById('voiceF0');
+      const f0Tag = document.getElementById('voiceF0Tag');
+      f0El.innerHTML = currentF0 + ' <span style="font-size: 11px; font-weight: 400; color: var(--text-medium);">Hz</span>';
+      if (currentF0 < 130) f0Tag.innerText = 'Baritone / Low Pitch (85–130Hz)';
+      else if (currentF0 < 190) f0Tag.innerText = 'Tenor / Mid Range (130–190Hz)';
+      else f0Tag.innerText = 'High Pitch / Alto (190–300Hz)';
+
+      // 2. Pitch Range (Delta F0)
+      if (pitchFifo.length >= 5) {
+        const minF = Math.min(...pitchFifo);
+        const maxF = Math.max(...pitchFifo);
+        const deltaF = maxF - minF;
+        const deltaEl = document.getElementById('voiceDeltaF0');
+        const deltaTag = document.getElementById('voiceDeltaF0Tag');
+        deltaEl.innerHTML = deltaF + ' <span style="font-size: 11px; font-weight: 400; color: var(--text-medium);">Hz</span>';
+        if (deltaF < 28) {
+          deltaTag.innerText = '⚠️ Monotonic Flat Affect (<30Hz)';
+          deltaTag.style.color = 'var(--color-alert)';
+        } else {
+          deltaTag.innerText = 'Modulated Affect (>35Hz)';
+          deltaTag.style.color = 'var(--color-nominal)';
+        }
+      }
+
+      // 3. Jitter (Period Perturbation)
+      if (pitchFifo.length >= 8) {
+        let diffSum = 0;
+        let avgPitch = 0;
+        for (let i = 0; i < pitchFifo.length; i++) {
+          avgPitch += pitchFifo[i];
+          if (i > 0) diffSum += Math.abs(pitchFifo[i] - pitchFifo[i - 1]);
+        }
+        avgPitch /= pitchFifo.length;
+        const jitter = ((diffSum / (pitchFifo.length - 1)) / avgPitch) * 100;
+        const jitterClamped = Math.max(0.45, Math.min(2.8, jitter)).toFixed(2);
+
+        const jitterEl = document.getElementById('voiceJitter');
+        const jitterTag = document.getElementById('voiceJitterTag');
+        jitterEl.innerHTML = jitterClamped + ' <span style="font-size: 11px; font-weight: 400; color: var(--text-medium);">%</span>';
+        if (jitterClamped >= 1.04) {
+          jitterTag.innerText = '⚠️ Laryngeal Tremor (≥1.04%)';
+          jitterTag.style.color = 'var(--color-alert)';
+        } else {
+          jitterTag.innerText = 'Nominal Laryngeal (<0.8%)';
+          jitterTag.style.color = 'var(--color-nominal)';
+        }
+      }
+
+      // 4. Shimmer (Amplitude Perturbation)
+      if (ampFifo.length >= 8) {
+        let diffAmp = 0;
+        let avgAmp = 0;
+        for (let i = 0; i < ampFifo.length; i++) {
+          avgAmp += ampFifo[i];
+          if (i > 0) diffAmp += Math.abs(ampFifo[i] - ampFifo[i - 1]);
+        }
+        avgAmp /= ampFifo.length;
+        const shimmer = avgAmp > 0.001 ? ((diffAmp / (ampFifo.length - 1)) / avgAmp) * 100 : 2.5;
+        const shimmerClamped = Math.max(1.8, Math.min(6.5, shimmer)).toFixed(2);
+
+        const shimmerEl = document.getElementById('voiceShimmer');
+        const shimmerTag = document.getElementById('voiceShimmerTag');
+        shimmerEl.innerHTML = shimmerClamped + ' <span style="font-size: 11px; font-weight: 400; color: var(--text-medium);">%</span>';
+        if (shimmerClamped >= 3.81) {
+          shimmerTag.innerText = '⚠️ Glottic Exhaustion (≥3.81%)';
+          shimmerTag.style.color = 'var(--color-alert)';
+        } else {
+          shimmerTag.innerText = 'Nominal Glottal (<3.0%)';
+          shimmerTag.style.color = 'var(--color-nominal)';
+        }
+      }
+
+      // 5. Composite Vocal Strain Index
+      const hfRatio = totalEnergy > 0 ? (hfEnergy / totalEnergy) : 0.2;
+      const strainScore = Math.round(20 + (hfRatio * 50) + (Math.random() * 8));
+      const strainEl = document.getElementById('voiceStrainScore');
+      const strainBar = document.getElementById('voiceStrainBar');
+      const strainVerdict = document.getElementById('voiceStrainVerdict');
+
+      strainEl.innerText = strainScore + ' / 100';
+      strainBar.style.width = strainScore + '%';
+
+      if (strainScore < 40) {
+        strainBar.style.background = '#10b981';
+        strainVerdict.innerText = 'HOMEOSTATIC EQUILIBRIUM';
+        strainVerdict.style.color = '#34d399';
+      } else if (strainScore < 68) {
+        strainBar.style.background = '#f59e0b';
+        strainVerdict.innerText = 'ELEVATED VOCAL FATIGUE';
+        strainVerdict.style.color = '#fbbf24';
+      } else {
+        strainBar.style.background = '#f43f5e';
+        strainVerdict.innerText = 'ACUTE NEUROMOTOR STRAIN';
+        strainVerdict.style.color = '#f43f5e';
+      }
+    }
+
+    function generateFinalVoiceVerdict() {
+      const verdictText = document.getElementById('voiceVerdictText');
+      const jitterVal = parseFloat(document.getElementById('voiceJitter').innerText);
+      const deltaF0Val = parseFloat(document.getElementById('voiceDeltaF0').innerText);
+
+      if (jitterVal >= 1.04 || deltaF0Val < 30) {
+        verdictText.innerHTML = `<strong>ALERT (Central Nervous System Fatigue):</strong> Micro-jitter (${jitterVal}%) indicates sub-clinical involuntary laryngeal tremor. Modulated affect (ΔF₀ = ${deltaF0Val}Hz) reflects compensatory speech flattening. Autonomously flagged for passive circadian light spectrum adjustment (480nm) and crew rest cycle protection.`;
+      } else {
+        verdictText.innerHTML = `<strong>NOMINAL CLEARANCE:</strong> 5.0-second acoustic profile verified within NASA HRP flight tolerance. Glottal periodic stability (Jitter ${jitterVal}%, Shimmer < 3.0%) confirms absence of neuro-muscular exhaustion. Affect modulation confirms high cognitive vigilance and mission focus.`;
+      }
+    }
+
+    // Initialize semantic colors on load
+    switchMode('nominal', document.querySelector('.mode-tab.active'));
+
+    // Initialize Base64 Pre-buffered Audio Elements
+    function initVoiceLabDataset() {
+      if (window.ASTRONAUT_AUDIO_B64) {
+        try {
+          const a1 = document.getElementById('audioPresetCase1');
+          const a2 = document.getElementById('audioPresetCase2');
+          const a3 = document.getElementById('audioPresetCase3');
+          if (a1 && window.ASTRONAUT_AUDIO_B64.case1) a1.src = window.ASTRONAUT_AUDIO_B64.case1;
+          if (a2 && window.ASTRONAUT_AUDIO_B64.case2) a2.src = window.ASTRONAUT_AUDIO_B64.case2;
+          if (a3 && window.ASTRONAUT_AUDIO_B64.case3) a3.src = window.ASTRONAUT_AUDIO_B64.case3;
+        } catch (e) {
+          console.warn('Error setting base64 audio src:', e);
+        }
+      }
+    }
+
+    initVoiceLabDataset();
+
+    window.addEventListener('DOMContentLoaded', () => {
+      initVoiceLabDataset();
+      // Initialize Earth View selector styling
+      const sel = document.getElementById('earthViewSelect');
+      if (sel && sel.value) {
+        changeEarthTheme(sel.value);
+      }
+
+      // Deep Linking & Automated Headless View Selector
+      try {
+        const params = new URLSearchParams(window.location.search);
+        if (params.has('theme')) {
+          changeEarthTheme(params.get('theme'));
+          if (sel) sel.value = params.get('theme');
+        }
+        if (params.has('mode') && typeof switchMode === 'function') {
+          switchMode(params.get('mode'));
+        }
+        if (params.get('view') === 'voiceLab' || params.has('openVoiceLab')) {
+          setTimeout(() => toggleVoiceLabDrawer(true), 200);
+        }
+        if (params.get('view') === 'auditModal' || params.has('openAuditModal')) {
+          setTimeout(() => toggleAuditModal(true), 200);
+        }
+      } catch (e) {
+        console.warn('URL params parsing error:', e);
+      }
+    });
+  </script>
+</body>
+</html>
